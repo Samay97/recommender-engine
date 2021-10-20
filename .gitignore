@@ -110,3 +110,7 @@ frontend/out-tsc
 
 #backend
 backend/logs
+
+# IDE
+.idea/
+.vscode/

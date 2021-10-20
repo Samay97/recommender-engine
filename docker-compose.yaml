@@ -11,8 +11,10 @@ services:
     volumes:
        - ./frontend/:/usr/src/app
        - /usr/src/app/node_modules
+    depends_on:
+      - backend
   
-  server:
+  backend:
     build:
       context: ./backend/
       target: development-build-stage
