@@ -4,7 +4,7 @@ import { Product } from '@interfaces/products.interface';
 import productService from '@services/products.service';
 
 
-class UsersController {
+class ProductsController {
     public productService = new productService();
 
 
@@ -52,3 +52,6 @@ class UsersController {
         }
       };
 }
+
+
+export default ProductsController;
