@@ -1,0 +1,16 @@
+{
+  "name": "walmart-data",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "author": "samuel.knoch",
+  "license": "ISC",
+  "dependencies": {
+    "ansi-colors": "^4.1.1",
+    "axios": "^0.25.0",
+    "cli-progress": "^3.10.0"
+  }
+}
