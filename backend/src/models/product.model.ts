@@ -20,7 +20,7 @@ const productSchema: Schema = new Schema({
         unique: false
     },
 
-    main_image: {
+    mainImage: {
       type: String,
       required: false,
       unique: false
@@ -38,14 +38,14 @@ const productSchema: Schema = new Schema({
         unique: false
     },
 
-    ratings_total: {
+    ratingsTotal: {
       type: Number,
       required: false,
       unique: false
     },
 
-    best_seller: {
-      type: String,
+    bestSeller: {
+      type: Boolean,
       required: false,
       unique: false
     },
