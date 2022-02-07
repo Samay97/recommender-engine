@@ -2,9 +2,6 @@ import { IsString } from 'class-validator';
 
 export class CreateAddressDto {
   @IsString()
-  public addressID: string;
-
-  @IsString()
   public customerID: string;
 
   @IsString()
