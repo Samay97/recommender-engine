@@ -8,17 +8,17 @@ export class CreateCustomerDto {
   public password: string;
 
   @IsString()
-  public Firstname: string;
+  public firstname: string;
 
   @IsString()
-  public Lastname: string;
+  public lastname: string;
 
   @IsString()
-  public Gender: string;
+  public gender: string;
 
   @IsDate()
-  public Birthday: Date;
+  public birthday: Date;
 
   @IsString()
-  public AdressId: string;
+  public adressId: string;
 }

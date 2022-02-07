@@ -5,5 +5,5 @@ export interface Customer {
     gender: string;
     email: string;
     birthday: string;
-    adressId: string;
+    addressId: string;
   }
