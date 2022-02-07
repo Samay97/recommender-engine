@@ -1,4 +1,5 @@
-import { IsNumber, IsString } from 'class-validator';
+import { IsNumber, IsString, IsBoolean, IsArray } from 'class-validator';
+import { StringifyOptions } from 'querystring';
 
 export class CreateProductDto {
 
@@ -10,14 +11,26 @@ export class CreateProductDto {
 
   @IsString()
   public size: string;
-  
+
   @IsString()
   public description: string;
 
   @IsNumber()
   public price: Number;
 
- 
-  
-}
+  @IsBoolean()
+  public bestSeller: boolean;
 
+  @IsString()
+  public mainImage: string;
+
+  @IsArray()
+  public images: Array<string>;
+
+  @IsNumber()
+  public rating: number;
+
+  @IsNumber()
+  public ratingsTotal: number;
+
+}

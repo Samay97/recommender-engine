@@ -3,10 +3,10 @@ export interface Product {
     name: string,
     description: string,
     images: string[],
-    main_image: string,
+    mainImage: string,
     rating: number,
-    ratings_total: number
-    best_seller: string,
+    ratingsTotal: number
+    besteller: boolean,
     category: string,
     price: number
 }
