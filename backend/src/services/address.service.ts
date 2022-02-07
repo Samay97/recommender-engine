@@ -19,8 +19,9 @@ class AddressService {
   public async createAddress(addressData: CreateAddressDto): Promise<Address> {
     if (isEmpty(addressData)) throw new HttpException(400, "");
 
-    const findAddress: Address = await this.address.findOne({ addressId: addressData.address });
-    if (findAddress) throw new HttpException(409, "Your Address still exists");
+    const findAddress: Address = await this.address.findOne({ address: addressData.address });
+    const findCity: Address = await this.address.findOne({ city: addressData.city })
+    if (findAddress && findCity) throw new HttpException(409, "Your Address still exists");
 
     const createAddressData: Address = await this.address.create({ ...addressData });
 
