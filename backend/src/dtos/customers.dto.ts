@@ -20,5 +20,5 @@ export class CreateCustomerDto {
   public birthday: Date;
 
   @IsString()
-  public adressId: string;
+  public addressId: string;
 }
