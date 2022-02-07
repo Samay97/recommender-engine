@@ -5,9 +5,6 @@ export class CreateCustomerDto {
   public email: string;
 
   @IsString()
-  public customerId: string;
-
-  @IsString()
   public password: string;
 
   @IsString()
@@ -18,13 +15,13 @@ export class CreateCustomerDto {
 
   @IsString()
   public Gender: string;
-  
+
   @IsString()
   public Email: string;
-  
+
   @IsString()
   public Birthday: string;
-  
+
   @IsString()
   public AdressId: string;
 }

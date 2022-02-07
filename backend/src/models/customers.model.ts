@@ -1,4 +1,4 @@
-import { model, Schema, Document } from 'mongoose';
+import { model, Schema, Document, Date } from 'mongoose';
 import { Customer } from '@interfaces/customers.interface';
 
 const customerSchema: Schema = new Schema({
@@ -23,7 +23,9 @@ const customerSchema: Schema = new Schema({
     unique: true,
   },
   Birthday: {
-    type: String,
+    type: Date,
+    min: '1920-01-01',
+    max: '2022-01-01',
     required: true,
     unique: false,
   },
