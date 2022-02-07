@@ -16,7 +16,7 @@ export class CreateCustomerDto {
   @IsString()
   public Gender: string;
 
-  @IsString()
+  @IsDate()
   public Birthday: Date;
 
   @IsString()

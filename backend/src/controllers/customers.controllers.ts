@@ -30,7 +30,7 @@ class CustomerController {
 
   public getCustomersByAddressId = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const addressId: string = req.params.addressID  
+      const addressId: string = req.params.addressID
       const findAllCustomersData: Customer[] = await this.customerService.findCustomersByAddressId(addressId)
 
       res.status(200).json({ data: findAllCustomersData, message: 'findAll' });
@@ -45,18 +45,6 @@ class CustomerController {
       const createCustomerData: Customer = await this.customerService.createCustomer(customerData)
 
       res.status(201).json({ data: createCustomerData, message: 'Customer created' });
-    } catch (error) {
-      next(error);
-    }
-  };
-
-  public updateCustomer = async (req: Request, res: Response, next: NextFunction) => {
-    try {
-      const customerId: string = req.params.id;
-      const costumerData: CreateCustomerDto = req.body;
-      const updateCustomerData: Customer = await this.customerService.updateCustomer(customerId, costumerData);
-
-      res.status(200).json({ data: updateCustomerData, message: 'Costumer updated' });
     } catch (error) {
       next(error);
     }
