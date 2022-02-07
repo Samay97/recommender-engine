@@ -2,34 +2,34 @@ import { model, Schema, Document, Date } from 'mongoose';
 import { Customer } from '@interfaces/customers.interface';
 
 const customerSchema: Schema = new Schema({
-  Firstname: {
+  firstname: {
     type: String,
     required: true,
     unique: false,
   },
-  Lastname: {
+  lastname: {
     type: String,
     required: true,
     unique: false,
   },
-  Gender: {
+  gender: {
     type: String,
     required: true,
     unique: false,
   },
-  Email: {
+  email: {
     type: String,
     required: true,
     unique: true,
   },
-  Birthday: {
+  birthday: {
     type: Date,
     min: '1920-01-01',
     max: '2022-01-01',
     required: true,
     unique: false,
   },
-  AddressId: {
+  addressId: {
     type: String,
     required: true,
     unique: false,

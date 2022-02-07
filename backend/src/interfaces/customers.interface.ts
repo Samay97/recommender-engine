@@ -1,9 +1,9 @@
 export interface Customer {
     _id: string;
-    Firstname: string;
-    Lastname: string;
-    Gender: string;
-    Email: string;
-    Birthday: string;
-    AdressId: string;
+    firstname: string;
+    lastname: string;
+    gender: string;
+    email: string;
+    birthday: string;
+    adressId: string;
   }
