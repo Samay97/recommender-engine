@@ -33,7 +33,7 @@ const customerSchema: Schema = new Schema({
     type: String,
     required: true,
     unique: false,
-  }
+  },
 });
 
 const customerModel = model<Customer & Document>('Customer', customerSchema, 'customer');

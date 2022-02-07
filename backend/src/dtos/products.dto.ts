@@ -1,8 +1,6 @@
 import { IsNumber, IsString, IsBoolean, IsArray } from 'class-validator';
-import { StringifyOptions } from 'querystring';
 
 export class CreateProductDto {
-
   @IsString()
   public name: string;
 
@@ -32,5 +30,4 @@ export class CreateProductDto {
 
   @IsNumber()
   public ratingsTotal: number;
-
 }

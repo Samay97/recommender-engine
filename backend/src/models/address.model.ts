@@ -5,13 +5,13 @@ const addressSchema: Schema = new Schema({
   address: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   city: {
     type: String,
     required: true,
-    unique: false
-  }
+    unique: false,
+  },
 });
 
 const addressModel = model<Address & Document>('Address', addressSchema, 'address');

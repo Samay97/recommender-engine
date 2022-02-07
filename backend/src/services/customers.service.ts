@@ -13,28 +13,28 @@ class CustomerService {
   }
 
   public async findCustomerByCustomerId(customerId: string): Promise<Customer> {
-    if (isEmpty(customerId)) throw new HttpException(400, "");
+    if (isEmpty(customerId)) throw new HttpException(400, '');
 
     const findCustomer: Customer = await this.customers.findOne({ _id: customerId });
-    if (!findCustomer) throw new HttpException(409, "");
+    if (!findCustomer) throw new HttpException(409, '');
 
     return findCustomer;
   }
 
   public async findCustomersByAddressId(addressId: string): Promise<Customer[]> {
-    if (isEmpty(addressId)) throw new HttpException(400, "");
+    if (isEmpty(addressId)) throw new HttpException(400, '');
 
     const customers: Customer[] = await this.customers.find({ _id: addressId });
-    if (!customers) throw new HttpException(409, "");
+    if (!customers) throw new HttpException(409, '');
 
     return customers;
   }
 
   public async createCustomer(customerData: CreateCustomerDto): Promise<Customer> {
-    if (isEmpty(customerData)) throw new HttpException(400, "");
+    if (isEmpty(customerData)) throw new HttpException(400, '');
 
     const findCustomer: Customer = await this.customers.findOne({ email: customerData.email });
-    if (findCustomer) throw new HttpException(409, "");
+    if (findCustomer) throw new HttpException(409, '');
 
     const createUserData: Customer = await this.customers.create({ ...customerData });
 
