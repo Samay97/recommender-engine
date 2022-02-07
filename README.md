@@ -1,3 +1,5 @@
+[![lint and build project code](https://github.com/Samay97/recommender-engine/actions/workflows/main.yaml/badge.svg)](https://github.com/Samay97/recommender-engine/actions/workflows/main.yaml)
+
 # recommender-engine
 A recommender engine implemented in node. Project with the DHBW as a Studienarbeit
 
