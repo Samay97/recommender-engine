@@ -15,7 +15,7 @@ const productSchema: Schema = new Schema({
     },
 
     images: {
-        type: Array<string>,
+        type: [String],
         required: true,
         unique: false
     },
