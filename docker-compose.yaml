@@ -45,7 +45,10 @@ services:
       - .db-backup:/db-backup
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: admin
+      dbUser: myuser
+      dbPwd: password
 
 volumes:
   data:

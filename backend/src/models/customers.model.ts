@@ -36,6 +36,6 @@ const customerSchema: Schema = new Schema({
   }
 });
 
-const customerModel = model<Customer & Document>('Customer', customerSchema);
+const customerModel = model<Customer & Document>('Customer', customerSchema, 'customer');
 
 export default customerModel;

@@ -2,8 +2,10 @@
     "env": "development",
     "dbConfig": {
         "host": "mongo",
-        "database": "mongoose",
-        "port": 27017
+        "database": "recommender",
+        "port": 27017,
+        "username": "myuser",
+        "password": "password"
     },
     "secretKey": "secretKey",
     "log": {

@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { CreateProductDto } from '@dtos/products.dto';
 import { Product } from '@interfaces/products.interface';
 import productService from '@services/products.service';
+import { logger } from '@/utils/logger';
 
 
 class ProductsController {

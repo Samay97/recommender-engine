@@ -57,6 +57,6 @@ const productSchema: Schema = new Schema({
     }
 });
 
-const productModel = model<Product & Document>('Product', productSchema)
+const productModel = model<Product & Document>('Product', productSchema, 'product')
 
 export default productModel;

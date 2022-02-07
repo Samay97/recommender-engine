@@ -2,7 +2,6 @@ import { NextFunction, Request, Response } from 'express';
 import { CreateCustomerDto } from '@dtos/customers.dto';
 import { Customer } from '@interfaces/customers.interface';
 import customerService from '@services/customers.service';
-import { add } from 'winston';
 
 class CustomerController {
   public customerService = new customerService();

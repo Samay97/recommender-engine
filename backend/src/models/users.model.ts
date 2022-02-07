@@ -13,6 +13,6 @@ const userSchema: Schema = new Schema({
   },
 });
 
-const userModel = model<User & Document>('User', userSchema);
+const userModel = model<User & Document>('User', userSchema, 'user');
 
 export default userModel;
