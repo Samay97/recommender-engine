@@ -37,7 +37,7 @@ class WalmartParser {
             let products = [];
             data.forEach(element => {
                 try {
-                    const new_products = this.parseOneRequest(element);
+                    const new_products = this.parseOneRequest(element, category);
                     products = [...products, ...new_products];
                 } catch (error) {
                     console.error(error);
@@ -49,13 +49,14 @@ class WalmartParser {
         }
     }
 
-    parseOneRequest(data) {
+    parseOneRequest(data, category) {
         if (!data.category_results) 
             throw Error(`category_results not there or empty: ${data.request_parameters.type} : ${data.request_parameters.category_id}`);
 
     
         const new_result = data.category_results.map(element => {
             const product = element.product;
+
             return {
                 name: product.title,
                 description: product.description,
@@ -63,7 +64,9 @@ class WalmartParser {
                 mainImage: product.main_image,
                 rating: product.rating,
                 ratingsTotal: this._clampValueWithRandom(product.ratings_total),
-                price: this._dollar_in_euro(element.offers.primary.price)
+                price: this._dollar_in_euro(element.offers.primary.price),
+                bestSeller: product.best_seller ? true : false,
+                category: category
             };
         });
 
