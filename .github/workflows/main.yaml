@@ -68,5 +68,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.DOCKER_API_KEY }}
     - name: Build the docker-compose stack
       run: docker-compose -f docker-compose.yaml build
+    - name: Tag frontend
+      run: docker tag recommender-engine_frontend:latest ghcr.io/samay97/recommender-frontend:latest
+    - name: Tag backend
+      run: docker tag recommender-engine_backend:latest ghcr.io/samay97/recommender-backend:latest
+    - name: Upload frontend image
+      run: docker push ghcr.io/samay97/recommender-frontend:latest
+    - name: Upload backend image
+      run: docker push ghcr.io/samay97/recommender-backend:latest

@@ -24,7 +24,7 @@ and create a new dump with
 mongodump -u <user> -p <password> --gzip --archive > /db-backup/dump_`date "+%Y-%m-%d"`.gz
 ```
 
-## Load new duzmp into db
+## Load new dump into db
 
 to load a dump, simply restart the container
 
