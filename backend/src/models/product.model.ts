@@ -2,13 +2,7 @@ import { model, Schema, Document } from 'mongoose';
 import { Product } from '@interfaces/products.interface';
 
 const productSchema: Schema = new Schema({
-    productId: {
-        type: String,
-        required: true,
-        unique: true
-    },
-
-    productName: {
+    name: {
         type: String,
         required: true,
         unique: false
@@ -20,10 +14,16 @@ const productSchema: Schema = new Schema({
         unique: false
     },
 
-    category: {
-        type: String,
+    images: {
+        type: Array<string>,
         required: true,
         unique: false
+    },
+
+    main_image: {
+      type: String,
+      required: false,
+      unique: false
     },
 
     price: {
@@ -32,10 +32,28 @@ const productSchema: Schema = new Schema({
         unique: false
     },
 
-    size: {
-        type: String,
+    rating: {
+        type: Number,
         required: false,
         unique: false
+    },
+
+    ratings_total: {
+      type: Number,
+      required: false,
+      unique: false
+    },
+
+    best_seller: {
+      type: String,
+      required: false,
+      unique: false
+    },
+
+    category: {
+      type: String,
+      required: true,
+      unique: false
     }
 });
 
