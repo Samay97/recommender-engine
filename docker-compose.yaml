@@ -41,6 +41,7 @@ services:
     ports:
       - 27017:27017
     volumes:
+      - ./mongo-db/mongorestore.sh:/docker-entrypoint-initdb.d/mongorestore.sh
       - .db-backup:/db-backup
     environment:
       MONGO_INITDB_ROOT_USERNAME: root

@@ -9,3 +9,25 @@ naming `RE-[ticket-number]-[topic]`
 ## Commits
 
 commit `RE-[ticket-number] [message]`
+
+
+# Mongo DB
+All infos for mongo
+
+## Create new dump
+To create a new dump just run:
+```bash
+docker exec -it <docker-container-id> bash
+```
+and create a new dump with
+```bash
+mongodump -u <user> -p <password> --gzip --archive > /db-backup/dump_`date "+%Y-%m-%d"`.gz
+```
+
+## Load new duzmp into db
+
+to load a dump, simply restart the container
+
+```bash
+docker compose stop mongo && docker compose up mongo
+```
