@@ -3,6 +3,8 @@ const fs = require('fs');
 const cli = require('./src/cli');
 const parser = require('./src/parser');
 
+// Create Data https://mockaroo.com/
+
 
 PAGES = 3; // 3 * 40 = 120 Products
 CATEGORIES = [ // each catetory with its id
@@ -44,6 +46,7 @@ CATEGORIES.forEach(category => {
 });
 
 // Create do requests for each category with all pages
+/*
 urls.forEach((urls, category) => {
     requestList = [];
     urls.forEach(url=> {
@@ -62,6 +65,9 @@ urls.forEach((urls, category) => {
         console.log(errors);
     });
 });
+*/
+
+walmartParser.parseFile(`./data_raw/_products.json`)
 
 // Close progessbar
 barWrite.update(CATEGORIES.length);

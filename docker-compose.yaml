@@ -36,10 +36,15 @@ services:
       - mongo
   
   mongo:
-    image: mvertes/alpine-mongo
-    container_name: mongo
+    image: mongo:5
+    restart: always
     ports:
-      - '27017:27017'
+      - 27017:27017
+    volumes:
+      - .db-backup:/db-backup
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
 
 volumes:
   data:
