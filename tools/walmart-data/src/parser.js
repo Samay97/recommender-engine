@@ -1,4 +1,5 @@
 const fs = require('fs');
+const { resolve } = require('path');
 const path = require('path');
 const seedrandom = require('seedrandom');
 const randomGenerator = seedrandom('randomseed123456789');
@@ -21,10 +22,10 @@ class WalmartParser {
         this.bar = bar;
     }
 
-    parseFile(_path) {
+    async parseFile(_path, category) {
         let data;
         try {
-            const rawdata = fs.readFileSync('C:\\repos\\recommender-engine\\tools\\walmart-data\\data_parsed\\test\\7A187842053FDDF1AE669449DC29CBC7CE3562A7_products.json');
+            const rawdata = fs.readFileSync(_path);
             data = JSON.parse(rawdata);
         } catch (error) {
             console.log('Error in Parsing file');
@@ -42,7 +43,7 @@ class WalmartParser {
                     console.error(error);
                 }
             });
-            this.writeNewProducts('./data_parsed', '7A187842053FDDF1AE669449DC29CBC7CE3562A7', { ...products })
+            return this.writeNewProducts('./data_parsed', category, { ...products })
         } else {
             console.error('Error in data.length, seems empty');
         }
@@ -59,9 +60,9 @@ class WalmartParser {
                 name: product.title,
                 description: product.description,
                 images: product.images,
-                main_image: product.main_image,
+                mainImage: product.main_image,
                 rating: product.rating,
-                ratings_total: this._clampValueWithRandom(product.ratings_total),
+                ratingsTotal: this._clampValueWithRandom(product.ratings_total),
                 price: this._dollar_in_euro(element.offers.primary.price)
             };
         });
@@ -70,12 +71,15 @@ class WalmartParser {
     }
 
     writeNewProducts(rootPath, category, products) {
-        const data = JSON.stringify(products, null, 2);
-        const filePath = path.join(rootPath, `${category}.json`);
-        fs.writeFile(filePath, data, (err) => {
-            if (err) throw err;
-            if(this.bar) this.bar.increment();
-        });
+        return new Promise((resolve) => {
+            const data = JSON.stringify(products, null, 2);
+            const filePath = path.join(rootPath, `${category}.json`);
+            fs.writeFile(filePath, data, (err) => {
+                if (err) throw err;
+                if(this.bar) this.bar.increment();
+                resolve();
+            });
+        });        
     }
 
 }
