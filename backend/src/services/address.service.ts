@@ -16,20 +16,10 @@ class AddressService {
     return findAddress;
   }
 
-  public async getAddressByCustomerId(customerId: string): Promise<Address> {
-  if (isEmpty(customerId)) throw new HttpException(400, "")
-
-  const findAddress: Address = await this.address.findOne({_id: customerId});
-
-  if (!findAddress) throw new HttpException(404, "")
-
-  return findAddress;
-  }
-
   public async createAddress(addressData: CreateAddressDto): Promise<Address> {
     if (isEmpty(addressData)) throw new HttpException(400, "");
 
-    const findAddress: Address = await this.address.findOne({ addressId: addressData.addressID });
+    const findAddress: Address = await this.address.findOne({ addressId: addressData.address });
     if (findAddress) throw new HttpException(409, "Your Address still exists");
 
     const createAddressData: Address = await this.address.create({ ...addressData });

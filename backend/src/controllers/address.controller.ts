@@ -17,17 +17,6 @@ class AddressController {
     }
   };
 
-  public getAddressByCustomerId = async (req: Request, res: Response, next: NextFunction) => {
-    try {
-      const customerId: string = req.params.id;
-      const findOneAddress: Address = await this.addressService.getAddressByCustomerId(customerId);
-
-      res.status(200).json({ data: findOneAddress, message: 'findOne' });
-    } catch (error) {
-      next(error);
-    }
-  };
-
   public createAddress = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const addressData: CreateAddressDto = req.body;
