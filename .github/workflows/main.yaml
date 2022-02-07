@@ -1,4 +1,4 @@
-name: Lint Project Code
+name: lint and build project code
 
 on: [push]
 
@@ -62,3 +62,11 @@ jobs:
           ${{ runner.os }}-
     - run: npm ci
     - run: npm run lint
+
+  build:
+    needs: [lint-backend, lint-frontend]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the docker-compose stack
+      run: docker-compose -f docker-compose.yaml build
