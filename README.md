@@ -1,3 +1,5 @@
+[![lint and build project code](https://github.com/Samay97/recommender-engine/actions/workflows/main.yaml/badge.svg)](https://github.com/Samay97/recommender-engine/actions/workflows/main.yaml)
+
 # recommender-engine
 A recommender engine implemented in node. Project with the DHBW as a Studienarbeit
 
@@ -24,7 +26,7 @@ and create a new dump with
 mongodump -u <user> -p <password> --gzip --archive > /db-backup/dump_`date "+%Y-%m-%d"`.gz
 ```
 
-## Load new duzmp into db
+## Load new dump into db
 
 to load a dump, simply restart the container
 

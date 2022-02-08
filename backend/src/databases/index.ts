@@ -1,10 +1,10 @@
 import config from 'config';
 import { dbConfig } from '@interfaces/db.interface';
 
-const { host, port, database }: dbConfig = config.get('dbConfig');
+const { username, password, host, port, database }: dbConfig = config.get('dbConfig');
 
 export const dbConnection = {
-  url: `mongodb://${host}:${port}/${database}`,
+  url: `mongodb://${username}:${password}@${host}:${port}/${database}`,
   options: {
     useNewUrlParser: true,
     useUnifiedTopology: true,

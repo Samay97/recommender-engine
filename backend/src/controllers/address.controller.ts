@@ -31,7 +31,7 @@ class AddressController {
   public deleteAddress = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const addressId: string = req.params.id;
-      const deleteAddressData: Address = await this.addressService.deleteAddress(addressId)
+      const deleteAddressData: Address = await this.addressService.deleteAddress(addressId);
 
       res.status(200).json({ data: deleteAddressData, message: 'deleted' });
     } catch (error) {

@@ -8,20 +8,20 @@ class AddressService {
   public address = addressModel;
 
   public async getAddressByAddressId(addressId: string): Promise<Address> {
-    if (isEmpty(addressId)) throw new HttpException(400, "")
+    if (isEmpty(addressId)) throw new HttpException(400, '');
 
-    const findAddress: Address = await this.address.findOne({_id: addressId});
-    if (!findAddress) throw new HttpException(404, "")
+    const findAddress: Address = await this.address.findOne({ _id: addressId });
+    if (!findAddress) throw new HttpException(404, '');
 
     return findAddress;
   }
 
   public async createAddress(addressData: CreateAddressDto): Promise<Address> {
-    if (isEmpty(addressData)) throw new HttpException(400, "");
+    if (isEmpty(addressData)) throw new HttpException(400, '');
 
     const findAddress: Address = await this.address.findOne({ address: addressData.address });
-    const findCity: Address = await this.address.findOne({ city: addressData.city })
-    if (findAddress && findCity) throw new HttpException(409, "Your Address still exists");
+    const findCity: Address = await this.address.findOne({ city: addressData.city });
+    if (findAddress && findCity) throw new HttpException(409, 'Your Address still exists');
 
     const createAddressData: Address = await this.address.create({ ...addressData });
 
@@ -30,7 +30,7 @@ class AddressService {
 
   public async deleteAddress(addressId: string): Promise<Address> {
     const deleteAddressById: Address = await this.address.findByIdAndDelete(addressId);
-    if (!deleteAddressById) throw new HttpException(409, "");
+    if (!deleteAddressById) throw new HttpException(409, '');
 
     return deleteAddressById;
   }

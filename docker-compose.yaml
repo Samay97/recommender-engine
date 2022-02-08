@@ -19,7 +19,7 @@ services:
       context: ./backend/
       target: development-build-stage
       dockerfile: Dockerfile
-    container_name: server
+    container_name: backend
     ports:
       - '3000:3000'
     environment:
@@ -38,6 +38,7 @@ services:
   mongo:
     image: mongo:5
     restart: always
+    container_name: mongo
     ports:
       - 27017:27017
     volumes:
@@ -45,7 +46,10 @@ services:
       - .db-backup:/db-backup
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: admin
+      dbUser: myuser
+      dbPwd: password
 
 volumes:
   data:
