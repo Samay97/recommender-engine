@@ -1,9 +1,9 @@
-import { IsString, IsArray } from 'class-validator'
+import { IsString, IsArray } from 'class-validator';
 
 export class CreateShoppingCartDto {
-    @IsString()
-    public customerId: string;
+  @IsString()
+  public customerId: string;
 
-    @IsArray()
-    public products: Array<string>;
+  @IsArray()
+  public products: Array<string>;
 }

@@ -12,7 +12,7 @@ const shoppingCartSchema: Schema = new Schema({
     type: [String],
     required: true,
     unique: false,
-  }
+  },
 });
 
 const shoppingCartModel = model<ShoppingCart & Document>('ShoppingCart', shoppingCartSchema, 'shoppingCart');

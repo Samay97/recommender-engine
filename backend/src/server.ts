@@ -13,6 +13,14 @@ import ShoppingCartRoute from './routes/shoppingCart.route';
 
 validateEnv();
 
-const app = new App([new IndexRoute(), new UsersRoute(), new AuthRoute(), new ProductRoute(), new AddressRoute(), new CustomersRoute(), new ShoppingCartRoute()]);
+const app = new App([
+  new IndexRoute(),
+  new UsersRoute(),
+  new AuthRoute(),
+  new ProductRoute(),
+  new AddressRoute(),
+  new CustomersRoute(),
+  new ShoppingCartRoute(),
+]);
 
 app.listen();
