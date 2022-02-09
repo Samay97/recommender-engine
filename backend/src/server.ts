@@ -9,6 +9,7 @@ import validateEnv from '@utils/validateEnv';
 import ProductRoute from './routes/products.route';
 import AddressRoute from './routes/address.route';
 import CustomersRoute from './routes/customers.route';
+import ShoppingCartRoute from './routes/shoppingCart.route';
 import OrderRoute from './routes/order.route';
 
 validateEnv();
@@ -20,6 +21,7 @@ const app = new App([
   new ProductRoute(),
   new AddressRoute(),
   new CustomersRoute(),
+  new ShoppingCartRoute(),
   new OrderRoute(),
 ]);
 
