@@ -11,6 +11,7 @@ import AddressRoute from './routes/address.route';
 import CustomersRoute from './routes/customers.route';
 import ShoppingCartRoute from './routes/shoppingCart.route';
 import OrderRoute from './routes/order.route';
+import CategoryRoute from '@routes/category.route';
 
 validateEnv();
 
@@ -23,6 +24,7 @@ const app = new App([
   new CustomersRoute(),
   new ShoppingCartRoute(),
   new OrderRoute(),
+  new CategoryRoute(),
 ]);
 
 app.listen();

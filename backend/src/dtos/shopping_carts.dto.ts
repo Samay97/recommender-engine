@@ -1,4 +1,4 @@
-import { IsString, IsArray } from 'class-validator';
+import { IsArray, IsString } from 'class-validator';
 
 export class CreateShoppingCartDto {
   @IsString()
