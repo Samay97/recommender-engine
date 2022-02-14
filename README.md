@@ -33,3 +33,37 @@ to load a dump, simply restart the container
 ```bash
 docker compose stop mongo && docker compose up mongo
 ```
+
+## Debug VS-Code
+
+To debbug the backend adjust the docker-compose target to `development-build-stage-debugger`
+
+```yml
+backend:
+    build:
+      context: ./backend/
+      target: development-build-stage-debugger
+
+```
+
+Create a new Lauch option in vs code and replace the config with this example
+
+```json
+{
+    "version": "0.2.0",
+    "configurations": [  
+      {
+        "name": "Docker: Attach to Node",
+        "type": "node",
+        "request": "attach",
+        "restart": true,
+        "port": 9229,
+        "address": "localhost",
+        "localRoot": "${workspaceFolder}/backend/src/",
+        "remoteRoot": "/app/src/",
+        "protocol": "inspector",
+      }  
+    ]
+  }
+```
+Run docker containers and after startup run vs code debugger with the new lauch option
