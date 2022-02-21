@@ -66,4 +66,4 @@ Create a new Lauch option in vs code and replace the config with this example
     ]
   }
 ```
-Run docker containers and after startup run vs code debugger with the new lauch option
+Run docker containers and after startup run vs code debugger with the new launch option

@@ -51,7 +51,8 @@ const productSchema: Schema = new Schema({
   },
 
   category: {
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: 'Category',
     required: true,
     unique: false,
   },

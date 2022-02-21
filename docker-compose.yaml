@@ -17,7 +17,7 @@ services:
   backend:
     build:
       context: ./backend/
-      target: development-build-stage
+      target: development-build-stage-debugger
       dockerfile: Dockerfile
     container_name: backend
     ports:
