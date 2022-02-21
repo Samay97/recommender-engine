@@ -1,4 +1,4 @@
-import { IsNumber, IsArray, IsString, IsDate } from 'class-validator';
+import { IsArray, IsDate, IsNumber, IsString } from 'class-validator';
 
 export class CreateOrderDto {
   @IsString()

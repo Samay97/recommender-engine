@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - 80:80
-      - 49153:49153
+      - 49153:49153 # hot reload port
     container_name: frontend
     volumes:
        - ./frontend/:/usr/src/app
@@ -17,11 +17,12 @@ services:
   backend:
     build:
       context: ./backend/
-      target: development-build-stage
+      target: development-build-stage-debugger
       dockerfile: Dockerfile
     container_name: backend
     ports:
-      - '3000:3000'
+      - 3000:3000
+      - 9229:9229 # debug port
     environment:
       PORT: 3000
       MONGO_HOST: mongo
@@ -51,6 +52,7 @@ services:
       MONGO_INITDB_DATABASE: admin
       dbUser: myuser
       dbPwd: password
+      dbName: recommender
 
 volumes:
   data:

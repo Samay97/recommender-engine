@@ -111,7 +111,9 @@ frontend/.angular
 
 #backend
 backend/logs
+backend/dist
 
 # IDE
 .idea/
 .vscode/
+

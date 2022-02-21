@@ -1,4 +1,4 @@
-import { model, Schema, Document, Date } from 'mongoose';
+import { Date, Document, model, Schema } from 'mongoose';
 import { Customer } from '@interfaces/customers.interface';
 
 const customerSchema: Schema = new Schema({

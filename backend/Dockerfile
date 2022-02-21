@@ -10,6 +10,13 @@ RUN npm install
 EXPOSE 3000
 
 # Development build stage
+FROM common-build-stage as development-build-stage-debugger
+
+ENV NODE_ENV development
+
+CMD ["npm", "run", "dev:debugg"]
+
+# Development build stage
 FROM common-build-stage as development-build-stage
 
 ENV NODE_ENV development
