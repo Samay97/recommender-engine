@@ -22,7 +22,17 @@ class RatingController {
       const productId: string = req.params.id;
       const findRatings: Ratings[] = await this.ratingService.getRatingsByProductId(productId);
 
-      res.status(200).json({ data: findRatings, message: 'findAll' });
+      let ratings = 0;
+      length = findRatings.length;
+      for (let i = 0; i < length; i = i + 1) {
+        ratings = ratings + findRatings[i].rating;
+      }
+
+      const total_rating = ratings / length;
+
+      const data = [total_rating, length];
+
+      res.status(200).json({ data: data, message: 'getTotalRating' });
     } catch (error) {
       next(error);
     }

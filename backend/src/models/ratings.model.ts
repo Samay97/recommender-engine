@@ -8,7 +8,7 @@ const ratingsSchema: Schema = new Schema({
     unique: false,
   },
 
-  priductId: {
+  productId: {
     type: String,
     required: true,
     unique: false,
