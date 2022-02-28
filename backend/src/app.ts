@@ -69,6 +69,7 @@ class App {
   }
 
   private initSessionMiddleware() {
+<<<<<<< HEAD
     const sessionStore = MongoStore.create({
       mongoUrl: dbConnection.url,
       collectionName: 'sessions',
@@ -86,6 +87,9 @@ class App {
         },
       }),
     );
+=======
+
+>>>>>>> bdf7e91 (remove later)
   }
 
   private initializeRoutes(routes: Routes[]) {
