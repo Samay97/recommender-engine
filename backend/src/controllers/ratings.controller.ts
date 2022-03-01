@@ -22,13 +22,10 @@ class RatingController {
       const productId: string = req.params.id;
       const findRatings: Ratings[] = await this.ratingService.getRatingsByProductId(productId);
 
-      let ratingsSum = findRatings.reduce(
-        (previousValue, currentValue) => previousValue + currentValue.rating,
-        0
-      );
-      
+      const ratingsSum = findRatings.reduce((previousValue, currentValue) => previousValue + currentValue.rating, 0);
+
       const ratingAVG = ratingsSum / findRatings.length || 0;
-      
+
       const data = [ratingAVG, findRatings.length];
 
       res.status(200).json({ data: data, message: 'getTotalRating' });
