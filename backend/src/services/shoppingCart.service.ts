@@ -42,7 +42,7 @@ class ShoppingCartService {
     const id = (await data)._id;
 
     const updateShoppingCartById: ShoppingCart = await this.shoppingCart.findByIdAndUpdate(id, { shoppingCartData });
-    if (!updateShoppingCartById) throw new HttpException(409, "Deletion not possible");
+    if (!updateShoppingCartById) throw new HttpException(409, 'Deletion not possible');
 
     return updateShoppingCartById;
   }

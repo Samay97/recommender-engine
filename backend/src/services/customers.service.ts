@@ -43,7 +43,7 @@ class CustomerService {
 
   public async deleteCustomer(customerId: string): Promise<Customer> {
     const deleteCustomerById: Customer = await this.customers.findByIdAndDelete(customerId);
-    if (!deleteCustomerById) throw new HttpException(409, "Deletion not possible");
+    if (!deleteCustomerById) throw new HttpException(409, 'Deletion not possible');
 
     return deleteCustomerById;
   }
