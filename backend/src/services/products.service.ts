@@ -34,7 +34,7 @@ class ProductService {
 
   public async deleteProduct(productId: string): Promise<Product> {
     const deleteProductById: Product = await this.products.findByIdAndDelete(productId);
-    if (!productId) throw new HttpException(409, '');
+    if (!deleteProductById) throw new HttpException(409, 'Deletion not possible');
 
     return deleteProductById;
   }
