@@ -1,0 +1,7 @@
+<h1>Home</h1>
+
+<div>
+    Product: {{ (product | async)?.name }} <br>
+
+    <img [src]='(product | async)?.mainImage'>
+</div>
