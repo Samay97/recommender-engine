@@ -12,6 +12,7 @@ import CustomersRoute from './routes/customers.route';
 import ShoppingCartRoute from './routes/shoppingCart.route';
 import OrderRoute from './routes/order.route';
 import CategoryRoute from '@routes/category.route';
+import RatingRoute from './routes/ratings.route';
 
 validateEnv();
 
@@ -25,6 +26,7 @@ const app = new App([
   new ShoppingCartRoute(),
   new OrderRoute(),
   new CategoryRoute(),
+  new RatingRoute(),
 ]);
 
 app.listen();
