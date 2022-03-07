@@ -7,20 +7,20 @@ import { isEmpty } from '@utils/util';
 class ShoppingCartService {
   public shoppingCart = shoppingCartModel;
 
-  public async findShoppingCartByCustomerId(id: string): Promise<ShoppingCart> {
-    if (isEmpty(id)) throw new HttpException(400, '');
+  public async findShoppingCartByCustomerId(customerId: string): Promise<ShoppingCart> {
+    if (isEmpty(customerId)) throw new HttpException(400, 'CustomerId is empty');
 
-    const findShoppingCart: ShoppingCart = await this.shoppingCart.findOne({ customerId: id });
-    if (!findShoppingCart) throw new HttpException(409, '');
+    const findShoppingCart: ShoppingCart = await this.shoppingCart.findOne({ customerId: customerId });
+    if (!findShoppingCart) throw new HttpException(404, 'Shopping Cart not found');
 
     return findShoppingCart;
   }
 
   public async createShoppingCart(shoppingCartData: CreateShoppingCartDto): Promise<ShoppingCart> {
-    if (isEmpty(shoppingCartData)) throw new HttpException(400, '');
+    if (isEmpty(shoppingCartData)) throw new HttpException(400, 'ShoppingCartData is empty');
 
     const findShoppingCart: ShoppingCart = await this.shoppingCart.findOne({ customerId: shoppingCartData.customerId });
-    if (findShoppingCart) throw new HttpException(409, '');
+    if (findShoppingCart) throw new HttpException(409, 'Shopping Cart still exists');
 
     const createShoppingCartData: ShoppingCart = await this.shoppingCart.create({ ...shoppingCartData });
 
@@ -32,8 +32,8 @@ class ShoppingCartService {
    * and remove products from the shopping cart
    */
   public async updateShoppingCart(customerId: string, shoppingCartData: CreateShoppingCartDto): Promise<ShoppingCart> {
-    if (isEmpty(shoppingCartData)) throw new HttpException(400, '');
-
+    if (isEmpty(shoppingCartData)) throw new HttpException(400, 'Data is empty');
+    if (isEmpty(customerId)) throw new HttpException(400, 'CustomerId is empty');
     /**
      * Id of the shopping cart and the customer id haave to be the samr
      * only the products can be overwritten
@@ -42,7 +42,7 @@ class ShoppingCartService {
     const id = (await data)._id;
 
     const updateShoppingCartById: ShoppingCart = await this.shoppingCart.findByIdAndUpdate(id, { shoppingCartData });
-    if (!updateShoppingCartById) throw new HttpException(409, "You're not user");
+    if (!updateShoppingCartById) throw new HttpException(409, 'Deletion not possible');
 
     return updateShoppingCartById;
   }

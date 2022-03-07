@@ -16,13 +16,13 @@ class OrderService {
     if (isEmpty(customerId)) throw new HttpException(400, 'No customer id');
 
     const findOrder: Order[] = await this.orders.find({ customerId: customerId });
-    if (!findOrder) throw new HttpException(409, '');
+    if (!findOrder) throw new HttpException(404, 'Order not found');
 
     return findOrder;
   }
 
   public async createOrder(orderData: CreateOrderDto): Promise<Order> {
-    if (isEmpty(orderData)) throw new HttpException(400, '');
+    if (isEmpty(orderData)) throw new HttpException(400, 'OrderData is empty');
 
     const findOrder: Order = await this.orders.findOne({ date: orderData.date });
     if (findOrder) throw new HttpException(409, `Your order already exists`);
@@ -34,7 +34,7 @@ class OrderService {
 
   public async deleteOrder(orderId: string): Promise<Order> {
     const deleteOrderById: Order = await this.orders.findByIdAndDelete(orderId);
-    if (!orderId) throw new HttpException(409, '');
+    if (!orderId) throw new HttpException(409, 'Deletion not possible');
 
     return deleteOrderById;
   }

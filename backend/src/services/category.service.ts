@@ -16,7 +16,7 @@ class CategoryService {
     if (isEmpty(name)) throw new HttpException(400, 'No Category name');
 
     const findCategory: Category = await this.categories.findOne({ name: name });
-    if (!findCategory) throw new HttpException(409, '');
+    if (!findCategory) throw new HttpException(404, 'Category was not found');
 
     return findCategory;
   }
@@ -25,7 +25,7 @@ class CategoryService {
     if (isEmpty(categoryId)) throw new HttpException(400, 'No Category id');
 
     const findCategory: Category = await this.categories.findById(categoryId);
-    if (!findCategory) throw new HttpException(409, '');
+    if (!findCategory) throw new HttpException(404, 'Category was not found');
 
     return findCategory;
   }
@@ -43,7 +43,7 @@ class CategoryService {
 
   public async deleteCategory(categoryId: string): Promise<Category> {
     const deletedCategory: Category = await this.categories.findByIdAndDelete(categoryId);
-    if (!categoryId) throw new HttpException(409, '');
+    if (!deletedCategory) throw new HttpException(409, 'Deletion was not possible');
 
     return deletedCategory;
   }
