@@ -1,0 +1,8 @@
+Product: {{ (product | async)?.name }} <br>
+<img width="100%" [src]='(product | async)?.mainImage | imageResolver: "big"'>
+
+<h3>{{ (product | async)?.price }} €</h3>
+
+Description <br>
+{{ (product | async)?.description }} <br>
+

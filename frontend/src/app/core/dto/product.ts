@@ -6,6 +6,7 @@ export interface Product {
     description: string;
     images: string[];
     mainImage: string;
+    price: number;
     rating: number;
     ratingsTotal: number;
     bestSeller: boolean;

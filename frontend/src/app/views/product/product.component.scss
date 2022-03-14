@@ -7,12 +7,12 @@ $default-width: 1500px;
 }
 
 @media (max-width: 830px) {
-    .category-list {
+    .product-list {
         grid-template-columns: repeat(2, 1fr) !important;
     }
 }
 
-.category-list {
+.product-list {
     list-style: none;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -24,15 +24,20 @@ $default-width: 1500px;
     padding-left: 0;
 }
 
-.category-card {
+.product-card {
     cursor: pointer;
+    padding-bottom: 50px;
 
     &-title {
-        text-align: center;
         font-size: 1.25rem;
     }
 
     &-image {
         width: 100%;
+    }
+
+    &-price {
+        font-weight: bold;
+        font-size: 1.15rem;
     }
 }

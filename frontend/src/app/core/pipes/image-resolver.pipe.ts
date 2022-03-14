@@ -5,6 +5,7 @@ export enum ImageSize {
     BIG = 'big',
     NORMAL = 'normal',
     SMALL = 'small',
+    XSMALL = 'xsmall',
 }
 
 @Pipe({
@@ -14,17 +15,20 @@ export class ImageResolverPipe implements PipeTransform {
     transform(value: string | undefined, imageSize: ImageSize | string = ImageSize.NORMAL): string {
         if (value == undefined) return '';
 
-        let size = 450;
+        let size = 350;
 
         switch (imageSize) {
             case ImageSize.XBIG:
                 size = 1920;
                 break;
             case ImageSize.BIG:
-                size = 960;
+                size = 500;
                 break;
             case ImageSize.SMALL:
                 size = 280;
+                break;
+            case ImageSize.XSMALL:
+                size = 210;
                 break;
         }
 

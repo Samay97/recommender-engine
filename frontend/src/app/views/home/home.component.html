@@ -1,13 +1,14 @@
-<h1>Home</h1>
+<h1 class="deafult-page-box">Home</h1>
 
-<div>
-    Product: {{ (product | async)?.name }} <br>
-    <img [src]='(product | async)?.mainImage | imageResolver'>
-
-    <h3>All Categories</h3>
-    <ul>
-        <li *ngFor='let cat of (categories | async)'>
-            {{ cat.name }}
-        </li>
-    </ul>
+<div class="deafult-page-box">
+    <h2>
+        Shop By Category
+    </h2>
 </div>
+
+<ul class="category-list">
+    <li *ngFor='let cat of (categories | async)' class="category-card" (click)="onCategoryClicked(cat)">
+        <img class="category-card-image" src='https://www.surforma.com/media/filer_public_thumbnails/filer_public/01/a2/01a2dd6a-bae7-4682-a8ed-dad568aaa6bd/l4179.jpg__800x600_q95_crop_subject_location-1060%2C1499_subsampling-2_upscale.jpg'>
+        <div class="category-card-title">{{ cat.name }}</div>
+    </li>
+</ul>
