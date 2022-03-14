@@ -8,6 +8,8 @@ import express from 'express';
 import helmet from 'helmet';
 import hpp from 'hpp';
 import morgan from 'morgan';
+import session from 'express-session';
+import MongoStore from 'connect-mongo';
 import { connect, set } from 'mongoose';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
@@ -63,6 +65,27 @@ class App {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(cookieParser());
+    this.initSessionMiddleware();
+  }
+
+  private initSessionMiddleware() {
+    const sessionStore = MongoStore.create({
+      mongoUrl: dbConnection.url,
+      collectionName: 'sessions',
+    });
+
+    this.app.use(
+      session({
+        name: 'SessionId',
+        secret: config.get('secretKey'),
+        resave: false,
+        saveUninitialized: true,
+        store: sessionStore,
+        cookie: {
+          maxAge: 1000 * 60 * 60 * 24 * 1, // Equals 1 Day
+        },
+      }),
+    );
   }
 
   private initializeRoutes(routes: Routes[]) {
