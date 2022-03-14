@@ -2,6 +2,12 @@
 
 <div>
     Product: {{ (product | async)?.name }} <br>
+    <img [src]='(product | async)?.mainImage | imageResolver'>
 
-    <img [src]='(product | async)?.mainImage'>
+    <h3>All Categories</h3>
+    <ul>
+        <li *ngFor='let cat of (categories | async)'>
+            {{ cat.name }}
+        </li>
+    </ul>
 </div>

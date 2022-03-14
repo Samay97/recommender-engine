@@ -10,7 +10,6 @@ import hpp from 'hpp';
 import morgan from 'morgan';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
-import { v4 as uuidv4 } from 'uuid';
 import { connect, set } from 'mongoose';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
@@ -70,8 +69,6 @@ class App {
   }
 
   private initSessionMiddleware() {
-<<<<<<< HEAD
-<<<<<<< HEAD
     const sessionStore = MongoStore.create({
       mongoUrl: dbConnection.url,
       collectionName: 'sessions',
@@ -89,26 +86,6 @@ class App {
         },
       }),
     );
-=======
-
->>>>>>> bdf7e91 (remove later)
-=======
-    const sessionStore = MongoStore.create({
-      mongoUrl: dbConnection.url,
-      collectionName: 'sessions'
-    });
-
-    this.app.use(session({
-      name: 'SessionId',
-      secret: config.get('secretKey'),
-      resave: false,
-      saveUninitialized: true,
-      store: sessionStore,
-      cookie: {
-        maxAge: (1000 * 60 * 60 * 24) * 1 // Equals 1 Day
-      }
-    }));
->>>>>>> b8d7edd (add session id)
   }
 
   private initializeRoutes(routes: Routes[]) {

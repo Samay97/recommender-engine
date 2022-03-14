@@ -4,15 +4,20 @@ import { map } from 'rxjs/operators';
 
 import { Product, ProductResponse } from '../dto';
 import { Observable } from 'rxjs';
+import { APP_CONFIG } from '../config';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class ProductService {
+    private rootUrl = APP_CONFIG.ROOT_URL;
+    private productUrl = this.rootUrl + '/products';
 
-  constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) {}
 
-  public getProduct(): Observable<Product> {
-    return this.http.get<ProductResponse>('/api/products/620111b3d2da416cdc967d72').pipe(map((res: ProductResponse) => res.data));
-  }
+    public getProductById(id: string): Observable<Product> {
+        return this.http.get<ProductResponse>(`${this.productUrl}/${id}`).pipe(map((res: ProductResponse) => res.data));
+    }
+
+    public getProductsByCategory(categoryId: string): void {}
 }

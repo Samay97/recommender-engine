@@ -4,5 +4,5 @@ export enum Message {
     CREATED = 'created',
     DELETED = 'deleted',
     LOGIN = 'login',
-    LOGOUT = 'logout'
+    LOGOUT = 'logout',
 }
