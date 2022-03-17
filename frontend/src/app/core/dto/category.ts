@@ -9,3 +9,7 @@ export interface Category {
 export interface CategoriesResponse extends Response<Category[]> {
     message: Message.FIND_MANY;
 }
+
+export interface CategorieResponse extends Response<Category> {
+    message: Message.FIND_ONE;
+}

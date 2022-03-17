@@ -2,12 +2,55 @@
 
 :host {
     width: 100%;
+    background-color: $base-color-darker;
+    position: fixed;
 }
 
 .header-container {
     display: flex;
-    height: 50px;
+    height: $height-header;
     justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    font-size: 1.125rem;
 
-    border-bottom: 1pt solid $gray-color;
+    .header-search {
+        background-color: $dark-color;
+        border-radius: 15px;
+        height: 50px;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+
+        .search-input {
+            border: none;
+            color: white;
+            outline: none;
+            background-color: transparent;
+            line-height: 50px;
+            height: 50px;
+            padding-left: 15px;
+            width: 320px;
+            font-size: 1.125rem;
+        }
+
+        .search-btn {
+            cursor: pointer;
+            height: 35px;
+            width: 35px;
+            line-height: 35px;
+            color: wheat;
+            margin-top: 7.5px;
+            margin-right: 10px;
+            border-radius: 50%;
+            padding: 5px 15px 0 5px;
+            transition: background-color 0.25s ease-out;
+        }
+
+        &:hover {
+            .search-btn {
+                background-color: $accent-color;
+            }
+        }
+    }
 }

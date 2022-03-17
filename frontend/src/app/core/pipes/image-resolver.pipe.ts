@@ -22,7 +22,7 @@ export class ImageResolverPipe implements PipeTransform {
                 size = 1920;
                 break;
             case ImageSize.BIG:
-                size = 500;
+                size = 380;
                 break;
             case ImageSize.SMALL:
                 size = 280;

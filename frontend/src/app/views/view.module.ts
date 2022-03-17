@@ -7,6 +7,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SharedModule } from '../core/shared-module.module';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductComponent } from './product/product.component';
+import { RecommendationsComponent } from './recommendations/recommendations.component';
 
 @NgModule({
     declarations: [
@@ -16,6 +17,7 @@ import { ProductComponent } from './product/product.component';
         FooterComponent,
         ProductListComponent,
         ProductComponent,
+        RecommendationsComponent,
     ],
     imports: [CommonModule, SharedModule],
     exports: [PageNotFoundComponent, HomeComponent, HeaderComponent, FooterComponent, ProductListComponent],
