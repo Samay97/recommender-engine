@@ -26,7 +26,7 @@ class ProductService {
 
     const category = (await findProduct).category;
 
-    const allProducts: Product[] = await this.products.find({category: category});
+    const allProducts: Product[] = await this.products.find({ category: category });
     if (!allProducts) throw new HttpException(409, 'Find no products with this category');
 
     return allProducts;
