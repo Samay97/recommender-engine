@@ -21,15 +21,21 @@ class ProductService {
     return findProduct;
   }
 
-  public async getProductsById(productId: string): Promise<Product[]> {
-    const findProduct = this.findProductById(productId);
+  public async getProductsByCategoryId(categoryId: string, pages: string): Promise<Product[]> {
+    /* set limit for one page to 20 */
+    const limit = 20;
+    let skip = 0;
+    let page = parseInt(pages);
+    while (page > 1) {
+      skip = skip + limit;
+      page = page - 1;
+    }
 
-    const category = (await findProduct).category;
+    const findProducts: Product[] = await this.products.find({ category: categoryId }).sort({ price: 1 }).skip(skip).limit(limit);
 
-    const allProducts: Product[] = await this.products.find({ category: category });
-    if (!allProducts) throw new HttpException(409, 'Find no products with this category');
+    if (!findProducts) throw new HttpException(409, 'Find no products with this category');
 
-    return allProducts;
+    return findProducts;
   }
 
   public async createProduct(productData: CreateProductDto): Promise<Product> {
