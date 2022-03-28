@@ -62,8 +62,10 @@ services:
     ports:
       - 5000:5000
     container_name: recommender       
+    restart: 'unless-stopped'
     depends_on:
       - backend
+    
 
 volumes:
   data:
