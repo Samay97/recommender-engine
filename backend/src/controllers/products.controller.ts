@@ -43,7 +43,8 @@ class ProductsController {
     try {
       const categoryId = req.params.id;
 
-      const maxPages = await this.productService.getMaxPages(categoryId);
+      const pages = await this.productService.getMaxPages(categoryId);
+      const maxPages = Math.ceil(pages);
 
       res.status(200).json({ data: maxPages, message: 'findAll' });
     } catch (error) {
