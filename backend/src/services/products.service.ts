@@ -31,7 +31,7 @@ class ProductService {
       page = page - 1;
     }
 
-    const findProducts: Product[] = await this.products.find({ category: categoryId }).sort({ price: 1 }).skip(skip).limit(limit);
+    const findProducts: Product[] = await this.products.find({ category: categoryId }).sort({ name: 1 }).skip(skip).limit(limit);
 
     if (!findProducts) throw new HttpException(409, 'Find no products with this category');
 

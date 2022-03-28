@@ -28,6 +28,6 @@ export class ProductService {
     public getMaxPageInCategory(categoryId: string): Observable<number> {
         return this.http
             .get<Response>(`${this.productUrl}/category/pages/${categoryId}`)
-            .pipe(map((res: any) => res.data));        
+            .pipe(map((res: any) => res.data));
     }
 }

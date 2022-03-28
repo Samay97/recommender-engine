@@ -16,7 +16,7 @@ export class ProductListComponent implements OnInit {
     public products: Observable<Product[]>;
     public category: Observable<Category>;
     public currentPage = 1;
-    public maxPage = 20;
+    public maxPage = 0;
 
     constructor(
         private activatedRoute: ActivatedRoute,
@@ -27,13 +27,18 @@ export class ProductListComponent implements OnInit {
 
     ngOnInit(): void {
         this.activatedRoute.queryParams.pipe(filter((params: any) => params.page)).subscribe((params: any) => {
-            this.currentPage = params.page;
+            this.currentPage = +params.page;
             this.products = this.productService.getProductsByCategory(this.categoryId, this.currentPage);
         });
         this.categoryId = this.activatedRoute.snapshot.params.catId;
         this.products = this.productService.getProductsByCategory(this.categoryId, this.currentPage);
         this.category = this.categoryService.getCategoryById(this.categoryId);
-        this.productService.getMaxPageInCategory(this.categoryId).subscribe((maxPage) => this.maxPage = maxPage);
+        this.productService.getMaxPageInCategory(this.categoryId).subscribe((maxPage) => {
+            this.maxPage = +maxPage;
+            if (this.maxPage < this.currentPage) {
+                this.goToPage(1);
+            }
+        });
     }
 
     public onProductClicked(product: Product): void {
@@ -50,11 +55,16 @@ export class ProductListComponent implements OnInit {
     }
 
     public goBeforePage(): void {
-        if (this.currentPage - 1 < 0) return;
+        if (this.currentPage - 1 < 1) return;
         this.goToPage(this.currentPage - 1);
     }
 
     private goToPage(page: number): void {
-        this.router.navigate([`/browse/${this.categoryId}`], { queryParams: { page } });
+        this.currentPage = page;
+        this.router.navigate([], {
+            relativeTo: this.activatedRoute,
+            queryParams: { page },
+            queryParamsHandling: 'merge',
+        });
     }
 }
