@@ -116,6 +116,9 @@ frontend/.angular
 backend/logs
 backend/dist
 
+#recommender
+__pycache__
+
 # IDE
 .idea/
 .vscode/
