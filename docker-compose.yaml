@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - 80:80
-      - 49153:49153 # hot reload port
+      #- 49153:49153 # hot reload port
     container_name: frontend
     volumes:
        - ./frontend/:/usr/src/app
@@ -27,7 +27,7 @@ services:
       PORT: 3000
       MONGO_HOST: mongo
       MONGO_PORT: 27017
-      MONGO_DATABASE: mongoose
+      MONGO_DATABASE: recommender
     volumes:
       - ./backend/:/app
       - /app/node_modules
@@ -63,8 +63,18 @@ services:
       - 5000:5000
     container_name: recommender       
     restart: 'unless-stopped'
+    volumes:
+      - ./recommender-engine/:/app
     depends_on:
       - backend
+    environment:
+      PORT: 5000
+      MONGO_HOST: mongo
+      MONGO_PORT: 27017
+      MONGO_DATABASE: recommender
+      MONGO_DATABASE_USER: myuser
+      MONGO_DATABASE_PASSWORD: password
+      FLASK_ENV: development
     
 
 volumes:
