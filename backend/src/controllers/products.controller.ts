@@ -39,6 +39,19 @@ class ProductsController {
     }
   };
 
+  public getMaxPages = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const categoryId = req.params.id;
+
+      const pages = await this.productService.getMaxPages(categoryId);
+      const maxPages = Math.ceil(pages);
+
+      res.status(200).json({ data: maxPages, message: 'findAll' });
+    } catch (error) {
+      next(error);
+    }
+  };
+
   public createProduct = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const productData: CreateProductDto = req.body;

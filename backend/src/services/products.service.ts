@@ -38,6 +38,18 @@ class ProductService {
     return findProducts;
   }
 
+  public async getMaxPages(categoryId: string) {
+    if (isEmpty(categoryId)) throw new HttpException(400, 'No category id');
+
+    const findProducts: Product[] = await this.products.find({ category: categoryId });
+    if (!findProducts) throw new HttpException(409, 'Products were not found');
+    /* one page has about 20 products */
+    const length = findProducts.length;
+    const pages = length / 20;
+
+    return pages;
+  }
+
   public async createProduct(productData: CreateProductDto): Promise<Product> {
     if (isEmpty(productData)) throw new HttpException(400, "You're not productData");
 
