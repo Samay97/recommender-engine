@@ -1,0 +1,17 @@
+<a class="go-back" (click)="onGoBackClicked()">go back to search</a>
+<h2>{{ (product | async)?.name }}</h2>
+
+
+<img width="100%" [src]='(product | async)?.mainImage | imageResolver: "big"'>
+
+<h3>{{ (product | async)?.price }} €</h3>
+
+Description: <br>
+<div [innerHTML]='(product | async)?.description'></div>
+
+<button>Buy</button>
+
+<br><br>
+
+<h4>Users also buy:</h4>
+<app-recommendations></app-recommendations>

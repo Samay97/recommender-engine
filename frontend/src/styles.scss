@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');
+
+/* COLORS */
+$base-color: #EAE7DC;
+$base-color-darker: #D8C3A5;
+$gray-color: #8E8D8A;
+$dark-color: #343535;
+$accent-color: #E98074;
+$accent-darker: #E85A4F;
+
+$font-deafult: #343535;
+$font-light: white;
+
+/* SIZE */
+$height-header: 60px;
+
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    color: $font-deafult;
+}
+
+.go-back {
+    text-decoration: underline;
+    cursor: pointer;
+}

@@ -1,0 +1,10 @@
+<h1 class="deafult-page-box">Products: {{ (category | async)?.name }}</h1>
+<a class="go-back" (click)="onGoBackClicked()">Go back Home</a>
+
+<ul class="product-list">
+    <li *ngFor='let product of (products | async)' class="product-card" (click)="onProductClicked(product)">
+        <img class="product-card-image" [src]='product.mainImage | imageResolver: "xsmall"'>
+        <div class="product-card-price">{{ product.price }} €</div>
+        <div class="product-card-title">{{ product.name }}</div>
+    </li>
+</ul>

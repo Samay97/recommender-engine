@@ -1,0 +1,17 @@
+@import '../../../styles.scss';
+
+:host {
+    width: 100%;
+    min-width: 450px;
+}
+
+.footer-container {
+    background-color: $dark-color;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 28px 20px;
+}
