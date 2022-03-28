@@ -19,19 +19,15 @@ export class ProductService {
         return this.http.get<ProductResponse>(`${this.productUrl}/${id}`).pipe(map((res: ProductResponse) => res.data));
     }
 
-    public getProductsByCategory(categoryId: string): Observable<Product[]> {
-        const prouct1 = this.http
-            .get<ProductResponse>(`${this.productUrl}/620111b3d2da416cdc967d74`)
-            .pipe(map((res: ProductResponse) => res.data));
-        const prouct2 = this.http
-            .get<ProductResponse>(`${this.productUrl}/620111b3d2da416cdc967d78`)
-            .pipe(map((res: ProductResponse) => res.data));
-        const prouct3 = this.http
-            .get<ProductResponse>(`${this.productUrl}/620111b3d2da416cdc967d80`)
-            .pipe(map((res: ProductResponse) => res.data));
-        const prouct4 = this.http
-            .get<ProductResponse>(`${this.productUrl}/620111b3d2da416cdc967d97`)
-            .pipe(map((res: ProductResponse) => res.data));
-        return forkJoin([prouct1, prouct2, prouct3, prouct4]);
+    public getProductsByCategory(categoryId: string, page = 1): Observable<Product[]> {
+        return this.http
+            .get<ProductsResponse>(`${this.productUrl}/category/${categoryId}`, { params: { page } })
+            .pipe(map((res: ProductsResponse) => res.data));
+    }
+
+    public getMaxPageInCategory(categoryId: string): Observable<number> {
+        return this.http
+            .get<Response>(`${this.productUrl}/category/pages/${categoryId}`)
+            .pipe(map((res: any) => res.data));        
     }
 }

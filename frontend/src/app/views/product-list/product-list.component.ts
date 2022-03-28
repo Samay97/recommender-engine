@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Category, Product } from 'src/app/core/dto';
 import { ProductService } from 'src/app/core/services';
 import { CategoryService } from 'src/app/core/services/category.service';
+import { filter } from 'rxjs/operators';
 
 @Component({
     selector: 'app-product-list',
@@ -14,6 +15,8 @@ export class ProductListComponent implements OnInit {
     private categoryId: string = '';
     public products: Observable<Product[]>;
     public category: Observable<Category>;
+    public currentPage = 1;
+    public maxPage = 20;
 
     constructor(
         private activatedRoute: ActivatedRoute,
@@ -23,9 +26,14 @@ export class ProductListComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
+        this.activatedRoute.queryParams.pipe(filter((params: any) => params.page)).subscribe((params: any) => {
+            this.currentPage = params.page;
+            this.products = this.productService.getProductsByCategory(this.categoryId, this.currentPage);
+        });
         this.categoryId = this.activatedRoute.snapshot.params.catId;
-        this.products = this.productService.getProductsByCategory(this.categoryId);
+        this.products = this.productService.getProductsByCategory(this.categoryId, this.currentPage);
         this.category = this.categoryService.getCategoryById(this.categoryId);
+        this.productService.getMaxPageInCategory(this.categoryId).subscribe((maxPage) => this.maxPage = maxPage);
     }
 
     public onProductClicked(product: Product): void {
@@ -34,5 +42,19 @@ export class ProductListComponent implements OnInit {
 
     public onGoBackClicked(): void {
         this.router.navigate(['/home']);
+    }
+
+    public goNextPage(): void {
+        if (this.currentPage + 1 > this.maxPage) return;
+        this.goToPage(this.currentPage + 1);
+    }
+
+    public goBeforePage(): void {
+        if (this.currentPage - 1 < 0) return;
+        this.goToPage(this.currentPage - 1);
+    }
+
+    private goToPage(page: number): void {
+        this.router.navigate([`/browse/${this.categoryId}`], { queryParams: { page } });
     }
 }

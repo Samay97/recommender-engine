@@ -1,3 +1,4 @@
+@import '../../../styles.scss';
 $default-width: 1500px;
 
 .deafult-page-box {
@@ -39,5 +40,21 @@ $default-width: 1500px;
     &-price {
         font-weight: bold;
         font-size: 1.15rem;
+    }
+}
+
+.paginator {
+    margin: 0 auto;
+    width: 250px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    
+    &-text {
+        font-size: 1.25rem;
+    }
+
+    &-button {
+        background-color: $accent-color;
     }
 }
