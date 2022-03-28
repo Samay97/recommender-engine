@@ -54,6 +54,19 @@ services:
       dbPwd: password
       dbName: recommender
 
+  
+  recommender:
+    build:
+      context: ./recommender-engine/
+      dockerfile: Dockerfile
+    ports:
+      - 5000:5000
+    container_name: recommender       
+    restart: 'unless-stopped'
+    depends_on:
+      - backend
+    
+
 volumes:
   data:
     driver: local
