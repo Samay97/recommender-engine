@@ -16,9 +16,26 @@ class ProductService {
     if (isEmpty(productId)) throw new HttpException(400, 'No Product id');
 
     const findProduct: Product = await this.products.findOne({ _id: productId });
-    if (!findProduct) throw new HttpException(409, '');
+    if (!findProduct) throw new HttpException(409, 'Product was not found');
 
     return findProduct;
+  }
+
+  public async getProductsByCategoryId(categoryId: string, pages: string): Promise<Product[]> {
+    /* set limit for one page to 20 */
+    const limit = 20;
+    let skip = 0;
+    let page = parseInt(pages);
+    while (page > 1) {
+      skip = skip + limit;
+      page = page - 1;
+    }
+
+    const findProducts: Product[] = await this.products.find({ category: categoryId }).sort({ price: 1 }).skip(skip).limit(limit);
+
+    if (!findProducts) throw new HttpException(409, 'Find no products with this category');
+
+    return findProducts;
   }
 
   public async createProduct(productData: CreateProductDto): Promise<Product> {

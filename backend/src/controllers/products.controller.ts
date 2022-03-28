@@ -27,6 +27,18 @@ class ProductsController {
     }
   };
 
+  public getProductsByCategoryId = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const categoryId = req.params.id;
+      const page: any = req.query.page;
+      const findAllProductsData: Product[] = await this.productService.getProductsByCategoryId(categoryId, page);
+
+      res.status(200).json({ data: findAllProductsData, message: 'findAll' });
+    } catch (error) {
+      next(error);
+    }
+  };
+
   public createProduct = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const productData: CreateProductDto = req.body;
