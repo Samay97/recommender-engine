@@ -8,3 +8,13 @@
         <div class="product-card-title">{{ product.name }}</div>
     </li>
 </ul>
+
+<div class="paginator">
+    <button class="paginator-button" mat-mini-fab aria-label="Before Page" (click)="goBeforePage()">
+        <mat-icon>navigate_before</mat-icon>
+      </button>
+    <span class="paginator-text">Page {{ currentPage }} of {{ maxPage }}</span>
+    <button class="paginator-button" mat-mini-fab aria-label="Next Page" (click)="goNextPage()">
+        <mat-icon>navigate_next</mat-icon>
+    </button>
+</div>

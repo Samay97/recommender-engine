@@ -20,6 +20,6 @@ export class HomeComponent implements OnInit {
     ngOnInit(): void {}
 
     public onCategoryClicked(category: Category) {
-        this.router.navigate(['/browse', category._id]);
+        this.router.navigate(['/browse', category._id], { queryParams: { page: 1 } });
     }
 }
