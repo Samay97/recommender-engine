@@ -14,4 +14,12 @@ Description: <br>
 <br><br>
 
 <h4>Users also buy:</h4>
+
+<div style="display: flex; flex-direction: row;">
+    <div *ngFor='let product of (contentBasedRecommendations | async)'>
+        {{product.name}}
+        <img width="100%" [src]='product.mainImage | imageResolver: "xsmall"'>
+    </div>
+</div>
+
 <app-recommendations></app-recommendations>

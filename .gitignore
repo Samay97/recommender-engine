@@ -72,6 +72,9 @@ typings/
 .env
 .env.test
 
+#pthon env
+recommender-engine/env
+
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 
@@ -112,6 +115,9 @@ frontend/.angular
 #backend
 backend/logs
 backend/dist
+
+#recommender
+__pycache__
 
 # IDE
 .idea/
