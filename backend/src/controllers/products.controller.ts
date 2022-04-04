@@ -1,10 +1,10 @@
 import { NextFunction, Request, Response } from 'express';
 import { CreateProductDto } from '@dtos/products.dto';
 import { Product } from '@interfaces/products.interface';
-import productService from '@services/products.service';
+import ProductService from '@services/products.service';
 
 class ProductsController {
-  public productService = new productService();
+  public productService = new ProductService();
 
   public getProductById = async (req: Request, res: Response, next: NextFunction) => {
     try {

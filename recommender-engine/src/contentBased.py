@@ -1,16 +1,13 @@
-from sqlite3 import DatabaseError
 import pandas as pd
-import numpy as np
+
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
 from pymongo.collection import Collection
 from bson.objectid import ObjectId
-
 from .database import get_mongo_client
 
 
-
-class ContendBasedRecommendation():
+class ContentBasedRecommendation():
 
     product_collection: Collection = None
     category_collection: Collection = None
@@ -22,7 +19,6 @@ class ContendBasedRecommendation():
         self.product_collection = client.recommender.product
         self.category_collection = client.recommender.category
         self.convert_products_collection_to_df()
-
         self.create_soup_and_overview()
         self.vertorize()
 

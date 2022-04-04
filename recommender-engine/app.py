@@ -1,14 +1,15 @@
 from flask import Flask, request
-from src.contendBased import ContendBasedRecommendation
+from src.contentBased import ContentBasedRecommendation
 
 app = Flask(__name__)
-cb_recommender: ContendBasedRecommendation = None
+cb_recommender: ContentBasedRecommendation = None
 
 def startup():
     global cb_recommender
-    cb_recommender = ContendBasedRecommendation()
+    cb_recommender = ContentBasedRecommendation()
 
-@app.route("/<productid>/recommendation/contendbased")
+
+@app.route("/<productid>/recommendation/contendbased", methods=['GET'])
 def get_recommendation(productid):
     recommendations_count = request.args.get('count', default = 1, type = int)
     data = cb_recommender.get_recommendations(productid, recommendations_count)
@@ -21,5 +22,7 @@ def get_recommendation(productid):
     # TODO remove when documentation is done
     #return data.to_csv()
 
-startup()
 
+if __name__ == "__main__":
+    startup()
+    app.run(debug=True, host='0.0.0.0', port=5000)

@@ -1,8 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/core/dto';
-import { ProductService } from 'src/app/core/services';
+import { RecommenderService, ProductService } from 'src/app/core/services';
 
 @Component({
     selector: 'app-product',
@@ -12,16 +12,20 @@ import { ProductService } from 'src/app/core/services';
 export class ProductComponent implements OnInit {
     private categoryId: string;
     public product: Observable<Product>;
+    public contentBasedRecommendations: Observable<Product[]>;
 
     constructor(
         private activatedRoute: ActivatedRoute,
+        private router: Router,
         private productService: ProductService,
-        private router: Router
+        private recommenderService: RecommenderService
     ) {}
 
     ngOnInit(): void {
         this.categoryId = this.activatedRoute.snapshot.params.catId;
-        this.product = this.productService.getProductById(this.activatedRoute.snapshot.params.productId);
+        const productId = this.activatedRoute.snapshot.params.productId;
+        this.product = this.productService.getProductById(productId);
+        this.contentBasedRecommendations = this.recommenderService.getProductRecommendations(productId);
     }
 
     public onGoBackClicked(): void {

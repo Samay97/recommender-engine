@@ -13,6 +13,7 @@ import ShoppingCartRoute from './routes/shoppingCart.route';
 import OrderRoute from './routes/order.route';
 import CategoryRoute from '@routes/category.route';
 import RatingRoute from './routes/ratings.route';
+import RecommenderRoute from './routes/recommender.route';
 
 validateEnv();
 
@@ -27,6 +28,7 @@ const app = new App([
   new OrderRoute(),
   new CategoryRoute(),
   new RatingRoute(),
+  new RecommenderRoute(),
 ]);
 
 app.listen();
