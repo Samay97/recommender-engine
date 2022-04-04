@@ -3,16 +3,14 @@ import RecommenderService from '@/services/recommender.service';
 import ProductService from '@/services/products.service';
 import { RecommenderProduct } from '@/interfaces/recommender.interface';
 
-
 class RecommenderController {
-
   private recommenderService = new RecommenderService();
   private productService = new ProductService();
 
   public getRecommendation = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const productId: string = req.params.productId;
-      
+
       let products = await this.recommenderService.getRecommendationsOnPorductId(productId);
 
       const promises = [];

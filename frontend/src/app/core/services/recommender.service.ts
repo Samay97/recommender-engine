@@ -16,6 +16,8 @@ export class RecommenderService {
     constructor(private http: HttpClient) {}
 
     public getProductRecommendations(productId: string): Observable<Product[]> {
-        return this.http.get<ProductsResponse>(`${this.recommenderUrl}/${productId}`).pipe(map((res: ProductsResponse) => res.data));
+        return this.http
+            .get<ProductsResponse>(`${this.recommenderUrl}/${productId}`)
+            .pipe(map((res: ProductsResponse) => res.data));
     }
 }

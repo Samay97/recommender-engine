@@ -5,7 +5,6 @@ import { isEmpty } from '@utils/util';
 import axios from 'axios';
 
 class RecommenderService {
-
   private recommnderHost = process.env.RECOMMENDER_HOST || 'recommender';
   private recommnderPort = process.env.RECOMMENDER_PORT || 5000;
   private recommenderRootUrl = `http://${this.recommnderHost}:${this.recommnderPort}/`;
@@ -13,9 +12,9 @@ class RecommenderService {
   public async getRecommendationsOnPorductId(productId: string, recommendationsCount = 5): Promise<RecommenderProduct[]> {
     if (isEmpty(productId)) throw new HttpException(400, '');
 
-    const recommendation = await axios.get(
-        `${this.recommenderRootUrl}${productId}/recommendation/contendbased`, { params: { count: recommendationsCount }}
-    );
+    const recommendation = await axios.get(`${this.recommenderRootUrl}${productId}/recommendation/contendbased`, {
+      params: { count: recommendationsCount },
+    });
 
     return recommendation.data;
   }
