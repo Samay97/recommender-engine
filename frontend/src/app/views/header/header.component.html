@@ -8,7 +8,13 @@
         </div>
     </div>
 
-    <div>Account</div>
+    <div *ngIf="(customer | async )?.Email">
+        Hello {{ (customer | async )?.Firstname }}
+    </div>
+    
+    <div *ngIf="!(customer | async )?.Email" style="cursor: pointer;" (click)="openDialog()">
+        Login
+    </div>
 
     <div>Card</div>
 </div>

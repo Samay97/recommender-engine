@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/core/dto';
 import { RecommenderService, ProductService } from 'src/app/core/services';
+import { Location } from '@angular/common';
 
 @Component({
     selector: 'app-product',
@@ -16,7 +17,7 @@ export class ProductComponent implements OnInit {
 
     constructor(
         private activatedRoute: ActivatedRoute,
-        private router: Router,
+        private _location: Location,
         private productService: ProductService,
         private recommenderService: RecommenderService
     ) {}
@@ -29,6 +30,6 @@ export class ProductComponent implements OnInit {
     }
 
     public onGoBackClicked(): void {
-        this.router.navigate(['/browse', this.categoryId]);
+        this._location.back();
     }
 }
