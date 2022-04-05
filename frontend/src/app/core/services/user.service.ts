@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, EMPTY, lastValueFrom, map, Observable } from 'rxjs';
+import { BehaviorSubject, lastValueFrom, map } from 'rxjs';
 import { APP_CONFIG } from '../config';
 import { Customer, CustomerResponse } from '../dto/customer';
 

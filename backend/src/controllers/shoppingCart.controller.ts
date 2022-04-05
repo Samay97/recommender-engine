@@ -22,7 +22,7 @@ class ShoppingCartController {
   public createShoppingCart = async (req: RequestWithUser, res: Response, next: NextFunction) => {
     try {
       const userData: Customer = req.user;
-      const shoppingCartData: CreateShoppingCartDto = { customerId: userData._id, products: [] }
+      const shoppingCartData: CreateShoppingCartDto = { customerId: userData._id, products: [] };
       const createShoppingCartData: ShoppingCart = await this.shoppingCartService.createShoppingCart(shoppingCartData);
 
       res.status(201).json({ data: createShoppingCartData, message: 'Shopping Cart created' });
@@ -34,7 +34,7 @@ class ShoppingCartController {
   public updateShoppingCart = async (req: RequestWithUser, res: Response, next: NextFunction) => {
     try {
       const customerId: string = req.user._id;
-      const shoppingCartData: CreateShoppingCartDto = {... req.body, customerId: customerId};
+      const shoppingCartData: CreateShoppingCartDto = { ...req.body, customerId: customerId };
       const updateShoppingCartData: ShoppingCart = await this.shoppingCartService.updateShoppingCart(customerId, shoppingCartData);
 
       res.status(200).json({ data: updateShoppingCartData, message: 'updated' });

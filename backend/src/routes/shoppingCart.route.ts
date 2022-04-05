@@ -17,7 +17,11 @@ class ShoppingCartRoute implements Routes {
   private initializeRoutes() {
     this.router.get(`${this.path}`, authMiddleware, this.shoppingcartController.getShoppingCartByCustomerId);
     this.router.post(`${this.path}`, authMiddleware, this.shoppingcartController.createShoppingCart);
-    this.router.put(`${this.path}`,  [authMiddleware, validationMiddleware(CreateShoppingCartDto, 'body', true)], this.shoppingcartController.updateShoppingCart);
+    this.router.put(
+      `${this.path}`,
+      [authMiddleware, validationMiddleware(CreateShoppingCartDto, 'body', true)],
+      this.shoppingcartController.updateShoppingCart,
+    );
   }
 }
 

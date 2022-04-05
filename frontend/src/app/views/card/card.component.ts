@@ -3,7 +3,6 @@ import { CardService, ProductService } from 'src/app/core/services';
 import { Card, Product } from 'src/app/core/dto';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginDialogComponent } from '../dialog/login-dialog/login-dialog.component';
-import { first, Observable, take } from 'rxjs';
 
 @Component({
     selector: 'app-card',
