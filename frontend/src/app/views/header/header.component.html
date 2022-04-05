@@ -1,5 +1,5 @@
 <div class="header-container">
-    <div>LOGO</div>
+    <div style="cursor: pointer;" [routerLink]="['/home']">Logo</div>
 
     <div class="header-search">
         <input placeholder="Search" type="text" class="search-input">
@@ -16,5 +16,8 @@
         Login
     </div>
 
-    <div>Card</div>
+    <div class="card-nav" (click)="openCard()">
+        <mat-icon style="vertical-align: 'center';" aria-hidden="false">shopping_cart</mat-icon>
+    </div>
+    
 </div>

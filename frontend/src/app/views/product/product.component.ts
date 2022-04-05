@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { firstValueFrom, Observable } from 'rxjs';
 import { Product } from 'src/app/core/dto';
-import { RecommenderService, ProductService } from 'src/app/core/services';
+import { RecommenderService, ProductService, CardService } from 'src/app/core/services';
 import { Location } from '@angular/common';
 
 @Component({
@@ -19,7 +19,8 @@ export class ProductComponent implements OnInit {
         private activatedRoute: ActivatedRoute,
         private _location: Location,
         private productService: ProductService,
-        private recommenderService: RecommenderService
+        private recommenderService: RecommenderService,
+        private cardService: CardService
     ) {}
 
     ngOnInit(): void {
@@ -31,5 +32,10 @@ export class ProductComponent implements OnInit {
 
     public onGoBackClicked(): void {
         this._location.back();
+    }
+
+    public async addToCard(): Promise<void> {
+        const product = await firstValueFrom(this.product);
+        this.cardService.addProductToShoppingCard(product._id);
     }
 }

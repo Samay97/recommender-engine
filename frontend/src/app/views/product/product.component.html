@@ -1,25 +1,27 @@
-<a class="go-back" (click)="onGoBackClicked()">go back to search</a>
-<h2>{{ (product | async)?.name }}</h2>
+<div class="deafult-page-box">
+    <a class="go-back" (click)="onGoBackClicked()">go back to search</a>
+    <h2>{{ (product | async)?.name }}</h2>
 
 
-<img width="100%" [src]='(product | async)?.mainImage | imageResolver: "big"'>
+    <img width="100%" [src]='(product | async)?.mainImage | imageResolver: "big"'>
 
-<h3>{{ (product | async)?.price }} €</h3>
+    <h3>{{ (product | async)?.price }} €</h3>
 
-Description: <br>
-<div [innerHTML]='(product | async)?.description'></div>
+    Description: <br>
+    <div [innerHTML]='(product | async)?.description'></div>
 
-<button>Buy</button>
+    <button (click)="addToCard()">Add to Card</button>
 
-<br><br>
+    <br><br>
 
-<h4>Users also buy:</h4>
+    <h4>Users also buy:</h4>
 
-<div style="display: flex; flex-direction: row;">
-    <div *ngFor='let product of (contentBasedRecommendations | async)'>
-        {{product.name}}
-        <img width="100%" [src]='product.mainImage | imageResolver: "xsmall"'>
+    <div style="display: flex; flex-direction: row;">
+        <div *ngFor='let product of (contentBasedRecommendations | async)'>
+            {{product.name}}
+            <img width="100%" [src]='product.mainImage | imageResolver: "xsmall"'>
+        </div>
     </div>
-</div>
 
-<app-recommendations></app-recommendations>
+    <app-recommendations></app-recommendations>
+</div>

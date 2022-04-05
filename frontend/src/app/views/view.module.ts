@@ -10,6 +10,8 @@ import { ProductComponent } from './product/product.component';
 import { RecommendationsComponent } from './recommendations/recommendations.component';
 import { LoginDialogComponent } from './dialog/login-dialog/login-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CardComponent } from './card/card.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     declarations: [
@@ -21,8 +23,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         ProductComponent,
         RecommendationsComponent,
         LoginDialogComponent,
+        CardComponent,
     ],
-    imports: [CommonModule, SharedModule, FormsModule, ReactiveFormsModule],
+    imports: [CommonModule, SharedModule, FormsModule, ReactiveFormsModule, RouterModule],
     exports: [PageNotFoundComponent, HomeComponent, HeaderComponent, FooterComponent, ProductListComponent],
 })
 export class ViewModule {}

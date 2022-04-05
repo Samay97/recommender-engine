@@ -16,8 +16,6 @@ export class LoginDialogComponent implements OnInit {
     ngOnInit(): void {}
 
     public async login(): Promise<void> {
-        console.log('Login');
-
         if (this.email.valid) {
             const user = await this.userService.login(this.email.value);
 

@@ -4,6 +4,7 @@ import { UserService } from 'src/app/core/services';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginDialogComponent } from '../dialog/login-dialog/login-dialog.component';
 import { Customer } from 'src/app/core/dto/customer';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-header',
@@ -11,9 +12,9 @@ import { Customer } from 'src/app/core/dto/customer';
     styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-    public customer: Observable<Customer>;
+    public customer: Observable<Customer | null>;
 
-    constructor(private userService: UserService, private dialog: MatDialog) {}
+    constructor(private userService: UserService, private dialog: MatDialog, private router: Router) {}
 
     ngOnInit(): void {
         this.customer = this.userService.userIsLoggedIn.asObservable();
@@ -24,5 +25,9 @@ export class HeaderComponent implements OnInit {
 
     public openDialog() {
         this.dialog.open(LoginDialogComponent, { width: '50%' });
+    }
+
+    public openCard() {
+        this.router.navigate(['/card']);
     }
 }

@@ -35,14 +35,14 @@ class ShoppingCartService {
     if (isEmpty(shoppingCartData)) throw new HttpException(400, 'Data is empty');
     if (isEmpty(customerId)) throw new HttpException(400, 'CustomerId is empty');
     /**
-     * Id of the shopping cart and the customer id haave to be the samr
+     * Id of the shopping cart and the customer id haave to be the same
      * only the products can be overwritten
      */
     const data = this.findShoppingCartByCustomerId(customerId);
     const id = (await data)._id;
 
-    const updateShoppingCartById: ShoppingCart = await this.shoppingCart.findByIdAndUpdate(id, { shoppingCartData });
-    if (!updateShoppingCartById) throw new HttpException(409, 'Deletion not possible');
+    const updateShoppingCartById: ShoppingCart = await this.shoppingCart.findByIdAndUpdate(id, { products: shoppingCartData.products });
+    if (!updateShoppingCartById) throw new HttpException(409, 'Update not possible');
 
     return updateShoppingCartById;
   }

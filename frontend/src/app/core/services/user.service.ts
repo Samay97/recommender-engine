@@ -10,7 +10,7 @@ import { Customer, CustomerResponse } from '../dto/customer';
 export class UserService {
     private rootUrl = APP_CONFIG.ROOT_URL + '/';
 
-    public userIsLoggedIn = new BehaviorSubject<Customer>({} as Customer);
+    public userIsLoggedIn = new BehaviorSubject<Customer | null>(null);
 
     constructor(private http: HttpClient) {
         if (!this.isLoggedIn()) this.logout();
@@ -50,5 +50,6 @@ export class UserService {
     public logout(): void {
         localStorage.removeItem('customer');
         localStorage.removeItem('expires_at');
+        this.userIsLoggedIn.next(null);
     }
 }
