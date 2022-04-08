@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CardService, ProductService, OrderService } from 'src/app/core/services';
 import { Card, Product } from 'src/app/core/dto';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginDialogComponent } from '../dialog/login-dialog/login-dialog.component';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
     selector: 'app-card',
@@ -17,7 +18,8 @@ export class CardComponent implements OnInit {
         private cardService: CardService,
         private productService: ProductService,
         private orderService: OrderService,
-        private dialog: MatDialog
+        private dialog: MatDialog,
+        private cdr: ChangeDetectorRef
     ) {}
 
     ngOnInit(): void {
@@ -50,15 +52,15 @@ export class CardComponent implements OnInit {
 
     public async placeOrderClicked(): Promise<void> {
         const products: Product[] = [...this.products];
-        const order = await this.orderService.createOrder(products);
+        const order = await lastValueFrom(this.orderService.createOrder(products));
+        console.log(order);
 
         for (const key in products) {
             if (Object.prototype.hasOwnProperty.call(products, key)) {
                 const element: Product = products[key];
                 this.card = await this.cardService.removeProductFromShoppingList(element._id);
+                this.getProducts();
             }
         }
-
-        console.log(order);
     }
 }

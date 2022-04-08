@@ -44,7 +44,7 @@ class ShoppingCartService {
     const updateShoppingCartById: ShoppingCart = await this.shoppingCart.findByIdAndUpdate(id, { products: shoppingCartData.products });
     if (!updateShoppingCartById) throw new HttpException(409, 'Update not possible');
 
-    return updateShoppingCartById;
+    return this.findShoppingCartByCustomerId(customerId);
   }
 
   /**

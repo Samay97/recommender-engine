@@ -19,16 +19,16 @@ export class ImageResolverPipe implements PipeTransform {
 
         switch (imageSize) {
             case ImageSize.XBIG:
-                size = 1920;
+                size = 640;
                 break;
             case ImageSize.BIG:
-                size = 380;
+                size = 340;
                 break;
             case ImageSize.SMALL:
-                size = 280;
+                size = 210;
                 break;
             case ImageSize.XSMALL:
-                size = 210;
+                size = 180;
                 break;
         }
 

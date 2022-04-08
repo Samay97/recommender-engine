@@ -40,15 +40,15 @@ export class CardService {
         return this.getShoppingCard();
     }
 
-    public removeProductFromShoppingList(productId: string): Card | undefined {
+    public async removeProductFromShoppingList(productId: string): Promise<Card | undefined> {
         if (!this.shoppingCard) return;
         const filteredProducts = this.shoppingCard.products.filter((item: string) => item !== productId);
         this.shoppingCard = { ...this.shoppingCard, products: [...filteredProducts] };
-        this.saveShoppingCard();
+        await this.saveShoppingCard();
         return this.getShoppingCard();
     }
 
-    private saveShoppingCard(): void {
+    private async saveShoppingCard(): Promise<void> {
         const card = this.getShoppingCard();
         this.http
             .put<CardResponse>(`${this.cardUrl}`, { products: card?.products, customerId: '' })
