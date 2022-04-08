@@ -57,7 +57,7 @@ export class CardService {
             });
     }
 
-    private _getShoppingCard(): Observable<Card> {
+    public _getShoppingCard(): Observable<Card> {
         return this.http.get<CardResponse>(`${this.cardUrl}`).pipe(
             catchError((error) => {
                 console.log(error);

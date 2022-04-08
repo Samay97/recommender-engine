@@ -1,10 +1,14 @@
 import { NextFunction, Request, Response } from 'express';
-import { CreateOrderDto } from '@dtos/order.dto';
+import { CreateOrderDto, CreateOrder } from '@dtos/order.dto';
 import { Order } from '@interfaces/order.interface';
-import orderService from '@services/order.service';
+import OrderService from '@services/order.service';
+import { RequestWithUser } from '@interfaces/auth.interface';
+import ProductService from '@/services/products.service';
+import { Product } from '@/interfaces/products.interface';
 
 class OrderController {
-  public orderService = new orderService();
+  public orderService = new OrderService();
+  public productService = new ProductService();
 
   public getAllOrders = async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -27,9 +31,23 @@ class OrderController {
     }
   };
 
-  public createOrder = async (req: Request, res: Response, next: NextFunction) => {
+  public createOrder = async (req: RequestWithUser, res: Response, next: NextFunction) => {
     try {
-      const orderData: CreateOrderDto = req.body;
+      const _orderData: CreateOrderDto = req.body;
+
+      const promises = [];
+      _orderData.products.forEach((product: string) => {
+          promises.push(this.productService.findProductById(product))
+      });
+
+      const products = await Promise.all(promises);      
+
+      const orderData: CreateOrder  = {
+        customerId: req.user._id,
+        products: [...products],
+        date: new Date(),
+        totalPrice: products.reduce((pv: number, cv:Product) => pv + cv.price, 0)
+      };
       const createProductData: Order = await this.orderService.createOrder(orderData);
 
       res.status(201).json({ data: createProductData, message: 'created' });

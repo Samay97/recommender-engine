@@ -1,5 +1,6 @@
 import { Document, model, Schema } from 'mongoose';
 import { Order } from '@interfaces/order.interface';
+import productModel from './product.model';
 
 const orderSchema: Schema = new Schema({
   customerId: {
@@ -9,7 +10,7 @@ const orderSchema: Schema = new Schema({
   },
 
   products: {
-    type: [String],
+    type: [productModel.schema],
     required: true,
     unique: false,
   },
