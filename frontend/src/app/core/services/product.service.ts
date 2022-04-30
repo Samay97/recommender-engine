@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 import { Product, ProductResponse, ProductsResponse } from '../dto';
-import { forkJoin, Observable, of, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { APP_CONFIG } from '../config';
 
 @Injectable({

@@ -1,15 +1,15 @@
-import { IsArray, IsDate, IsNumber, IsString } from 'class-validator';
+import { Product } from '@/interfaces/products.interface';
+import { IsArray, ArrayMinSize } from 'class-validator';
 
 export class CreateOrderDto {
-  @IsString()
-  public customerId: string;
-
   @IsArray()
+  @ArrayMinSize(1)
   public products: Array<string>;
+}
 
-  @IsDate()
+export class CreateOrder {
+  public products: Array<Product>;
+  public customerId: string;
   public date: Date;
-
-  @IsNumber()
   public totalPrice: number;
 }

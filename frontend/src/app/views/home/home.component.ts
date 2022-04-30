@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CategoryService } from 'src/app/core/services/category.service';
 import { Category, Product } from '../../core/dto';
-import { ProductService } from '../../core/services';
+import { CardService } from '../../core/services';
 
 @Component({
     selector: 'app-home',
@@ -13,7 +13,7 @@ import { ProductService } from '../../core/services';
 export class HomeComponent implements OnInit {
     public categories: Observable<Category[]>;
 
-    constructor(private categoryService: CategoryService, private router: Router) {
+    constructor(private categoryService: CategoryService, private router: Router, private cardService: CardService) {
         this.categories = this.categoryService.getAllCategories();
     }
 

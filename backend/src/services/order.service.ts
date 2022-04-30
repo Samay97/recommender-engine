@@ -2,7 +2,7 @@ import { HttpException } from '@exceptions/HttpException';
 import { Order } from '@interfaces/order.interface';
 import orderModel from '@models/order.model';
 import { isEmpty } from '@utils/util';
-import { CreateOrderDto } from '@/dtos/order.dto';
+import { CreateOrder } from '@/dtos/order.dto';
 
 class OrderService {
   public orders = orderModel;
@@ -21,11 +21,8 @@ class OrderService {
     return findOrder;
   }
 
-  public async createOrder(orderData: CreateOrderDto): Promise<Order> {
+  public async createOrder(orderData: CreateOrder): Promise<Order> {
     if (isEmpty(orderData)) throw new HttpException(400, 'OrderData is empty');
-
-    const findOrder: Order = await this.orders.findOne({ date: orderData.date });
-    if (findOrder) throw new HttpException(409, `Your order already exists`);
 
     const createOrderData: Order = await this.orders.create({ ...orderData });
 

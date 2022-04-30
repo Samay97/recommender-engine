@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Login</h1>
+<div mat-dialog-content style="width: 100%;">
+  <div style="width: 100%;">
+    <mat-form-field appearance="fill" style="width: 100%;">
+      <mat-label>Enter your email</mat-label>
+      <input style="width: 100%;" matInput placeholder="pat@example.com" [formControl]="email" required>
+      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </div>
+  
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+  <button mat-button cdkFocusInitial (click)="login()">Login</button>
+</div>

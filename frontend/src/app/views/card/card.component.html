@@ -1,0 +1,23 @@
+<div class="deafult-page-box">
+
+    <div *ngIf="!card?.customerId">
+        <h2>Please login to have a card</h2>
+        <button (click)="openDialog()">Login</button>
+    </div>
+
+    <div *ngIf="card?.customerId">
+        <h2>Card</h2>
+
+        <div *ngIf="products.length === 0">Nothing in here, go shopping!</div>
+
+        <ul class="card-container">
+            <li *ngFor="let product of products" class="parent">
+                <img [src]='product.mainImage | imageResolver: "xsmall"' class="div1">
+                <span class="div2">{{ (product.name.length>35)? (product.name | slice:0:35)+'..':(product.name) }}</span>
+                <button class="div3" (click)="removeProduct(product._id)">remove</button>
+            </li>
+        </ul>
+
+        <button *ngIf="products.length >= 1" (click)="placeOrderClicked()">Place Order</button>
+    </div>
+</div>
