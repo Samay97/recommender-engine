@@ -38,8 +38,13 @@ export class CardComponent implements OnInit {
     public getProducts(): void {
         if (!this.card) return;
         if (!this.card.products) return;
+
         this.products = [];
+        this.cdr.detectChanges();
+
+        if (this.card.products.length == 0) return;
         this.card.products.forEach((productId: string) => {
+            console.log(productId);
             this.productService.getProductById(productId).subscribe((product) => this.products.push(product));
         });
     }
