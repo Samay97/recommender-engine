@@ -37,16 +37,16 @@ class OrderController {
 
       const promises = [];
       _orderData.products.forEach((product: string) => {
-          promises.push(this.productService.findProductById(product))
+        promises.push(this.productService.findProductById(product));
       });
 
-      const products = await Promise.all(promises);      
+      const products = await Promise.all(promises);
 
-      const orderData: CreateOrder  = {
+      const orderData: CreateOrder = {
         customerId: req.user._id,
         products: [...products],
         date: new Date(),
-        totalPrice: products.reduce((pv: number, cv:Product) => pv + cv.price, 0)
+        totalPrice: products.reduce((pv: number, cv: Product) => pv + cv.price, 0),
       };
       const createProductData: Order = await this.orderService.createOrder(orderData);
 
