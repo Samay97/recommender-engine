@@ -34,7 +34,7 @@ class CollaborativeRecommendation():
         self.product_Dataframe = CollaborativeRecommendation.convert_product_collection_to_df(self.product_collection)
         self.customer_Dataframe = CollaborativeRecommendation.convert_customer_collection_to_df(self.customer_collection)
         self.order_Dataframe = CollaborativeRecommendation.convert_order_collection_to_df(self.order_collection)
-        self.merge_dataframes()
+        self.calculate_corr_matrix()
         self.create_prediction_data()
 
     def convert_order_collection_to_df(collection: Collection) -> DataFrame:

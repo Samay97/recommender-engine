@@ -8,7 +8,7 @@ cb_recommender: ContentBasedRecommendation = None
 def startup():
     global cb_recommender
     cb_recommender = ContentBasedRecommendation()
-    col_recommender = CollaborativeRecommendation()
+    #col_recommender = CollaborativeRecommendation()
 
 
 @app.route("/<productid>/recommendation/contendbased", methods=['GET'])
@@ -42,4 +42,4 @@ def get_recommendation_collaborative(productid):
 
 if __name__ == "__main__":
     startup()
-    #app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=True, host='0.0.0.0', port=5000)
