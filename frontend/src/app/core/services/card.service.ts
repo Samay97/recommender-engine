@@ -55,7 +55,7 @@ export class CardService {
             .subscribe((value) => {
                 console.log(value);
             });
-        return result
+        return result;
     }
 
     public _getShoppingCard(): Observable<Card> {
