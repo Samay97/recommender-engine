@@ -78,7 +78,8 @@ class CollaborativeRecommendation():
         X = buyed_crosstab.T
 
         # passing random_state = 17 to get the same repeatable results
-        SVD = TruncatedSVD(n_components=12, random_state=17)
+        # n_components < features, featrures == count of users buyed items
+        SVD = TruncatedSVD(n_components=2, random_state=17)
         resultant_matrix = SVD.fit_transform(X)
 
         self.corr_matrix = np.corrcoef(resultant_matrix)
