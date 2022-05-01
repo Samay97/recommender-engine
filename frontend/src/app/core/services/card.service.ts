@@ -48,13 +48,14 @@ export class CardService {
         return this.getShoppingCard();
     }
 
-    private async saveShoppingCard(): Promise<void> {
+    private async saveShoppingCard(): Promise<any> {
         const card = this.getShoppingCard();
-        this.http
+        const result = await this.http
             .put<CardResponse>(`${this.cardUrl}`, { products: card?.products, customerId: '' })
             .subscribe((value) => {
                 console.log(value);
             });
+        return result
     }
 
     public _getShoppingCard(): Observable<Card> {

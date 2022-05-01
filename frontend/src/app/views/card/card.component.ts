@@ -36,21 +36,20 @@ export class CardComponent implements OnInit {
     }
 
     public getProducts(): void {
-        if (!this.card) return;
-        if (!this.card.products) return;
-
         this.products = [];
         this.cdr.detectChanges();
 
+        if (!this.card) return;
+        if (!this.card.products) return;
         if (this.card.products.length == 0) return;
+
         this.card.products.forEach((productId: string) => {
-            console.log(productId);
             this.productService.getProductById(productId).subscribe((product) => this.products.push(product));
         });
     }
 
-    public removeProduct(productId: string): void {
-        this.cardService.removeProductFromShoppingList(productId);
+    public async removeProduct(productId: string): Promise<void> {
+        await this.cardService.removeProductFromShoppingList(productId);
         this.card = this.cardService.getShoppingCard();
         this.getProducts();
     }
@@ -64,8 +63,9 @@ export class CardComponent implements OnInit {
             if (Object.prototype.hasOwnProperty.call(products, key)) {
                 const element: Product = products[key];
                 this.card = await this.cardService.removeProductFromShoppingList(element._id);
-                this.getProducts();
             }
         }
+
+        this.getProducts();
     }
 }
