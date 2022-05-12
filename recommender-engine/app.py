@@ -61,12 +61,13 @@ def get_recommendation_hybrid(productid):
 
 if __name__ == "__main__":
     startup()
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=4000)
 
     # TODO´s Samuel bis Manu Urlaub vorbei ist:
     # 1. API das produkte über collaborative gefuinden werden könne     (DONE)
     # 2. Anpassbares Hybrid                                             (DONE)
-    # 3. Benny deployment machen                                        ()
-    # 4. Form damit nutzer angeben können wie gut die vorhersage war    (DONE)
-    # 5. Sortierung der Erbenisse inherlab einer Category               ()
-    # 6. Anpassen der produkt ansicht                                   ()
+    # 3. Depolyment vorbereiten (Nginx server, proxy config, routing)   (DONE)
+    # 4. Benny deployment machen                                        ()
+    # 5. Form damit nutzer angeben können wie gut die vorhersage war    (DONE)
+    # 6. Sortierung der Erbenisse inherlab einer Category               ()
+    # 7. Anpassen der produkt ansicht                                   ()
