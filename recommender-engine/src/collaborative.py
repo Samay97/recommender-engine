@@ -1,4 +1,3 @@
-from tokenize import String
 import numpy as np
 import pandas as pd
 import warnings
@@ -40,14 +39,6 @@ class CollaborativeRecommendation():
         self.calculate_corr_matrix()
         self.create_prediction_data()
 
-        # TODO´s Samuel bis Manu Urlaub vorbei ist:
-        # 1. API das produkte über collaborative gefuinden werden könne     (DONE)
-        # 2. Anpassbares Hybrid                                             ()
-        # 3. Benny deployment machen                                        ()
-        # 4. Form damit nutzer angeben können wie gut die vorhersage war    ()
-        # 5. Sortierung der Erbenisse inherlab einer Category               ()
-        # 6. Anpassen der produkt ansicht                                   ()
-
     def get_recommendations(self, product_id: str, recommendation_matching_value: int) -> DataFrame:
         result_df = pd.DataFrame()
         result_df['_id'] = ''
@@ -84,6 +75,9 @@ class CollaborativeRecommendation():
         #print("")
         #print("### 0.95 < List < 1")
         #print(list(movie_names[(corr_star_wars < 1.0) & (corr_star_wars > 0.95)]))
+
+        result_df.sort_values(by=['score'], inplace=True, ascending=False)
+
         return result_df
 
 
