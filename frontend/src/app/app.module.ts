@@ -8,6 +8,7 @@ import { ViewModule } from './views';
 import { SharedModule } from './core/shared-module.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
     declarations: [AppComponent],
@@ -20,6 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         BrowserAnimationsModule,
         FormsModule,
         ReactiveFormsModule,
+        MatButtonModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

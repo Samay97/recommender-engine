@@ -12,6 +12,7 @@ import { LoginDialogComponent } from './dialog/login-dialog/login-dialog.compone
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CardComponent } from './card/card.component';
 import { RouterModule } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
     declarations: [
