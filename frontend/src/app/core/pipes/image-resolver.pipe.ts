@@ -25,10 +25,10 @@ export class ImageResolverPipe implements PipeTransform {
                 size = 340;
                 break;
             case ImageSize.SMALL:
-                size = 210;
+                size = 280;
                 break;
             case ImageSize.XSMALL:
-                size = 180;
+                size = 240;
                 break;
         }
 

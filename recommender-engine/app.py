@@ -71,5 +71,5 @@ if __name__ == "__main__":
     # 5. Form damit nutzer angeben können wie gut die vorhersage war    (DONE)
     # 6. Sortierung der Erbenisse inherlab einer Category               (DONE)
     # 7. Anpassen der produkt ansicht                                   (DONE)
-    # 8. Bewertungen bei Produkten anzeigen                             ()
+    # 8. Bewertungen bei Produkten anzeigen                             (DONE)
     # 9. Icons für Category                                             (DONE)
