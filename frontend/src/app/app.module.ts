@@ -9,11 +9,11 @@ import { SharedModule } from './core/shared-module.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { BarRatingModule } from "ngx-bar-rating";
+import { BarRatingModule } from 'ngx-bar-rating';
 
 @NgModule({
     declarations: [AppComponent],
-    imports: [        
+    imports: [
         BrowserModule,
         AppRoutingModule,
         ViewModule,
@@ -23,7 +23,7 @@ import { BarRatingModule } from "ngx-bar-rating";
         FormsModule,
         ReactiveFormsModule,
         MatButtonModule,
-        BarRatingModule
+        BarRatingModule,
     ],
     providers: [],
     bootstrap: [AppComponent],
