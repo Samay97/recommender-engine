@@ -112,3 +112,12 @@ $default-width: 1200px;
         font-size: 1.15rem;
     }
 }
+
+.star-container {
+    display: flex;
+    margin-bottom: 1rem;
+
+    span {
+        padding-left: 1rem;
+    }
+}

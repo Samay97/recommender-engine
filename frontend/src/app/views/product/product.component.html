@@ -9,6 +9,15 @@
     <div class="main-content">
         <img class="main-image" [src]='(product | async)?.mainImage | imageResolver: "big"'>
         <div class="main-content-text">
+            <div class="star-container">
+                <bar-rating [rate]="(product | async)?.rating" [max]="5" [readOnly]="true"></bar-rating>
+                <span>
+                    {{(product | async)?.rating}}
+                </span>
+                <span style="color: #696969;">
+                    {{(product | async)?.ratingsTotal}} global ratings
+                </span>
+            </div>
             <h3> Price: <span class="price-tag">{{ (product | async)?.price }} €</span></h3>
             <button mat-raised-button (click)="addToCard()">Add to Basket</button>
             <hr>

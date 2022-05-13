@@ -12,7 +12,7 @@ import { LoginDialogComponent } from './dialog/login-dialog/login-dialog.compone
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CardComponent } from './card/card.component';
 import { RouterModule } from '@angular/router';
-import { MatButtonModule } from '@angular/material/button';
+import { BarRatingModule } from "ngx-bar-rating";
 
 @NgModule({
     declarations: [
@@ -26,7 +26,7 @@ import { MatButtonModule } from '@angular/material/button';
         LoginDialogComponent,
         CardComponent,
     ],
-    imports: [CommonModule, SharedModule, FormsModule, ReactiveFormsModule, RouterModule],
+    imports: [CommonModule, SharedModule, FormsModule, ReactiveFormsModule, RouterModule, BarRatingModule],
     exports: [PageNotFoundComponent, HomeComponent, HeaderComponent, FooterComponent, ProductListComponent],
 })
 export class ViewModule {}

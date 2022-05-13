@@ -72,4 +72,4 @@ if __name__ == "__main__":
     # 6. Sortierung der Erbenisse inherlab einer Category               (DONE)
     # 7. Anpassen der produkt ansicht                                   (DONE)
     # 8. Bewertungen bei Produkten anzeigen                             ()
-    # 9. Icons für Category                                             ()
+    # 9. Icons für Category                                             (DONE)
