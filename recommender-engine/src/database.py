@@ -8,13 +8,13 @@ def get_mongo_client():
     """
     :return: MongoClient
     """
-    global CLIENT # TODO test is needed
+    global CLIENT 
     if os.environ.get('MONGO_HOST') is None:
         raise ValueError('Missing env var: MONGO_HOST')
 
     if os.environ.get('MONGO_PORT') is None:
         raise ValueError('Missing env var: MONGO_PORT')
-
+    
     if os.environ.get('MONGO_DATABASE') is None:
         raise ValueError('Missing env var: MONGO_DATABASE')
     

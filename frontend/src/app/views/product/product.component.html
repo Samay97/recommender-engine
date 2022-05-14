@@ -1,27 +1,41 @@
 <div class="deafult-page-box">
-    <a class="go-back" (click)="onGoBackClicked()">go back to search</a>
+    <div class="go-back">
+        <a class="go-back" (click)="onGoBackClicked()">go back</a>
+    </div>
+
+    
     <h2>{{ (product | async)?.name }}</h2>
 
-
-    <img width="100%" [src]='(product | async)?.mainImage | imageResolver: "big"'>
-
-    <h3>{{ (product | async)?.price }} €</h3>
-
-    Description: <br>
-    <div [innerHTML]='(product | async)?.description'></div>
-
-    <button (click)="addToCard()">Add to Card</button>
-
-    <br><br>
-
-    <h4>Users also buy:</h4>
-
-    <div style="display: flex; flex-direction: row;">
-        <div *ngFor='let product of (contentBasedRecommendations | async)'>
-            {{product.name}}
-            <img width="100%" [src]='product.mainImage | imageResolver: "xsmall"'>
+    <div class="main-content">
+        <img class="main-image" [src]='(product | async)?.mainImage | imageResolver: "big"'>
+        <div class="main-content-text">
+            <div class="star-container">
+                <bar-rating [rate]="(product | async)?.rating" [max]="5" [readOnly]="true"></bar-rating>
+                <span>
+                    {{(product | async)?.rating}}
+                </span>
+                <span style="color: #696969;">
+                    {{(product | async)?.ratingsTotal}} global ratings
+                </span>
+            </div>
+            <h3> Price: <span class="price-tag">{{ (product | async)?.price }} €</span></h3>
+            <button mat-raised-button (click)="addToCard()">Add to Basket</button>
+            <hr>
+            <div class="description">
+                <h3>Description</h3>
+                <div [innerHTML]='(product | async)?.description'></div>
+            </div>
         </div>
     </div>
 
-    <app-recommendations></app-recommendations>
+    <div class="product-recommendations-container">
+        <h3>Products you may also like:</h3>
+
+        <div class="product-recommendations">
+            <div *ngFor='let product of (contentBasedRecommendations | async)' class="product-element" (click)="goToProduct(product)">
+                {{ (product.name.length>55)? (product.name | slice:0:55)+'..':(product.name) }}
+                <img width="100%" [src]='product.mainImage | imageResolver: "xsmall"'>
+            </div>
+        </div>
+    </div>
 </div>

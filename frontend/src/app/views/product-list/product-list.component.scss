@@ -28,6 +28,7 @@ $default-width: 1200px;
 .product-card {
     cursor: pointer;
     padding-bottom: 50px;
+    transition: all 0.1s linear;
 
     &-title {
         font-size: 1.25rem;
@@ -40,6 +41,12 @@ $default-width: 1200px;
     &-price {
         font-weight: bold;
         font-size: 1.15rem;
+    }
+
+    &:hover {
+        color: $accent-darker;
+        text-decoration: underline;
+        transition: all 0.1s linear;
     }
 }
 

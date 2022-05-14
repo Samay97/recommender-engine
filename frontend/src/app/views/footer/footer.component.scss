@@ -15,3 +15,20 @@
 
     padding: 28px 20px;
 }
+
+a {
+    color: blueviolet;
+}
+
+a:visited {
+    color: lighten($color: blueviolet, $amount: 30%);
+}
+
+.impressum {
+    padding-top: 1rem;
+}
+
+.flat-icon-links {
+    width: 80%;
+    font-size: 80%;
+}
