@@ -1,5 +1,3 @@
-from tokenize import String
-from turtle import shape
 import numpy as np
 import pandas as pd
 import warnings
@@ -22,6 +20,9 @@ class HybridRecommendation():
         
         data_cb.drop('name', inplace=True, axis=1)
         rows = data_cb.iloc[[0,1]]
+
+        data_cb = data_cb.reset_index(drop=True)
+        data_col = data_col.reset_index(drop=True)
         
         if (data_col.shape[0] == 0):
             return data_cb
@@ -41,14 +42,16 @@ class HybridRecommendation():
             row_col = data_col.iloc[[0,1]]
             result_df = pd.concat([rows, row_col], axis=0)
             
-            current_row_cb = data_cb.iloc[[3]]
-            current_row_col = data_col.iloc[[3]]
-            if (current_row_cb['score'] <= current_row_col['score']):
+            current_row_cb = data_cb.iloc[[2]]
+            current_row_col = data_col.iloc[[2]]
+
+            row_col_value = current_row_col['score'].item()
+            row_cb_value = current_row_cb['score'].item()
+            
+            if (row_cb_value <= row_col_value):
                 result_df.append(current_row_col)
             else:
                 result_df.append(current_row_cb)
         
-        print(result_df)
         result_df.sort_values(by=['score'], inplace=True, ascending=False)
-        print(result_df)
         return result_df
