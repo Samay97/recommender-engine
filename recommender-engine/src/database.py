@@ -9,6 +9,15 @@ def get_mongo_client():
     :return: MongoClient
     """
     global CLIENT 
+    #client = MongoClient('mongodb://{}:{}@{}:{}/{}'.format(
+    #        'myuser',
+    #        'password',
+    #       'localhost',
+    #        27017,
+    #        'recommender')
+    #    )
+    #CLIENT = client
+    #return CLIENT
     if os.environ.get('MONGO_HOST') is None:
         raise ValueError('Missing env var: MONGO_HOST')
 

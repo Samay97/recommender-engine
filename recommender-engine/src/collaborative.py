@@ -121,6 +121,9 @@ class CollaborativeRecommendation():
         # passing random_state = 17 to get the same repeatable results
         # n_components < features, features == count of users buyed items
         # TODO: Evaluate which n_components is best
+
+        print(X)
+
         SVD = TruncatedSVD(n_components=n_components, random_state=17)
         resultant_matrix = SVD.fit_transform(X)
 

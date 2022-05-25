@@ -34,7 +34,7 @@ def get_recommendation(productid):
 def get_recommendation_collaborative(productid):
     recommendation_matching_value = request.args.get('matching_value', default = 0.8, type = int)
     
-    data = col_recommender.get_recommendations(productid, recommendation_matching_value)    
+    data = col_recommender.get_recommendations(productid, recommendation_matching_value)
     
     response = app.response_class(
         response=data.to_json(orient='records', default_handler=str),
